@@ -1,11 +1,13 @@
 services:
   frontend:
-    build: ./frontend
+    image: node:24.11-bookworm-slim
     restart: unless-stopped
     ports:
       - "5173:5173"
     volumes:
       - ./frontend:/app
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
 
   gateway:
     image: nginx:1.28-alpine
@@ -15,8 +17,17 @@ services:
     volumes:
       - ./gateway/default.conf:/etc/nginx/conf.d/default.conf
 
+  rabbitmq:
+    image: rabbitmq:4.2-management-alpine
+    restart: unless-stopped
+    ports:
+      - "5672:5672" # AMQP protocol
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
   courses:
-    build: ./services/courses
+    image: node:24.11-bookworm-slim
     restart: unless-stopped
     expose:
       - "3000"
@@ -24,9 +35,11 @@ services:
       - ./services/courses:/app
     environment:
       - CHOKIDAR_USEPOLLING=true # To use tsx watch mode on docker
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
 
   media:
-    build: ./services/media
+    image: node:24.11-bookworm-slim
     restart: unless-stopped
     expose:
       - "3000"
@@ -34,3 +47,8 @@ services:
       - ./services/media:/app
     environment:
       - CHOKIDAR_USEPOLLING=true # To use tsx watch mode on docker
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+
+volumes:
+  rabbitmq_data:
