@@ -11,6 +11,9 @@ importers:
       '@eslint/js':
         specifier: ^9.39.1
         version: 9.39.1
+      '@scope/eslint-config':
+        specifier: workspace:*
+        version: link:libs/eslint-config
       '@scope/prettier-config':
         specifier: workspace:*
         version: link:libs/prettier-config
