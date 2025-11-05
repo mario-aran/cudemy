@@ -73,6 +73,9 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
     devDependencies:
+      '@monorepo/prettier-config':
+        specifier: workspace:*
+        version: link:../../libs/prettier-config
       '@types/amqplib':
         specifier: ^0.10.8
         version: 0.10.8
@@ -82,34 +85,9 @@ importers:
       '@types/node':
         specifier: ^24.10.0
         version: 24.10.0
-      '@workspace/prettier-config':
-        specifier: workspace:*
-        version: link:../../libs/prettier-config
       tsx:
         specifier: ^4.20.6
         version: 4.20.6
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
-
-  services/media:
-    dependencies:
-      express:
-        specifier: ^5.1.0
-        version: 5.1.0
-    devDependencies:
-      '@types/express':
-        specifier: ^5.0.5
-        version: 5.0.5
-      '@types/node':
-        specifier: ^24.10.0
-        version: 24.10.0
-      tsx:
-        specifier: ^4.20.6
-        version: 4.20.6
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
 
 packages:
 

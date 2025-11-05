@@ -1,4 +1,8 @@
 packages:
-  - "libs/*"
-  - "services/*"
-  - "frontend"
+  - libs/*
+  - services/*
+  - frontend
+
+onlyBuiltDependencies:
+  - "@swc/core"
+  - esbuild
