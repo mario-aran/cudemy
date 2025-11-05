@@ -1,8 +1,10 @@
 {
-  "name": "@monorepo/prettier-config",
+  "name": "@scope/prettier-config",
+  "private": true,
   "version": "1.0.0",
-  "main": ".prettierrc.json",
-  "dependencies": {
-    "prettier": "^3.6.2"
+  "type": "module",
+  "exports": "./index.js",
+  "peerDependencies": {
+    "prettier": ">=3.0.0"
   }
 }
