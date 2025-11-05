@@ -1,0 +1,7 @@
+{
+  "name": "udemy",
+  "scripts": {},
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

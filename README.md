@@ -5,3 +5,5 @@
 express | @types/express | @types/node: https://expressjs.com/en/starter/hello-world.html
 tsx: https://tsx.is/getting-started#project-installation
 typescript: https://www.typescriptlang.org/docs/handbook/compiler-options.html
+
+docker exec -it <container_name_or_id> bash
