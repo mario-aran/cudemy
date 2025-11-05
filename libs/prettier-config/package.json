@@ -1,0 +1,8 @@
+{
+  "name": "@monorepo/prettier-config",
+  "version": "1.0.0",
+  "main": ".prettierrc.json",
+  "dependencies": {
+    "prettier": "^3.6.2"
+  }
+}
