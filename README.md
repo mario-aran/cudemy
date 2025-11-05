@@ -7,3 +7,6 @@ tsx: https://tsx.is/getting-started#project-installation
 typescript: https://www.typescriptlang.org/docs/handbook/compiler-options.html
 
 docker exec -it <container_name_or_id> bash
+
+pnpm install
+pnpm up --latest -r --interactive
