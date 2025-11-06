@@ -1,10 +1,9 @@
 {
   "name": "@scope/prettier-config",
   "private": true,
-  "version": "1.0.0",
   "type": "module",
-  "exports": "./index.js",
+  "exports": "./prettier.config.js",
   "peerDependencies": {
-    "prettier": ">=3"
+    "prettier": "*"
   }
 }
