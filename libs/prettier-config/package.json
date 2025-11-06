@@ -6,10 +6,8 @@
     ".": "./.prettierrc.js",
     "./react": "./.prettierrc.react.js"
   },
-  "dependencies": {
-    "prettier-plugin-tailwindcss": "^0.7.1"
-  },
   "peerDependencies": {
-    "prettier": "*"
+    "prettier": "*",
+    "prettier-plugin-tailwindcss": "*"
   }
 }
