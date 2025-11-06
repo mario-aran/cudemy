@@ -1,4 +1,15 @@
-import eslintConfig from '@scope/eslint-config';
+import eslintConfigNode from '@scope/eslint-config/node';
+import eslintConfigReact from '@scope/eslint-config/react';
 import { defineConfig } from 'eslint/config';
 
-export default defineConfig([...eslintConfig]);
+export default defineConfig([
+  {
+    files: ['**/*'],
+    ignores: ['frontend/**'],
+    extends: [eslintConfigNode],
+  },
+  {
+    files: ['frontend/**/*'],
+    extends: [eslintConfigReact],
+  },
+]);
