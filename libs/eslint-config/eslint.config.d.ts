@@ -1,9 +1,11 @@
+import { Config } from 'eslint/config';
+
 declare module '@scope/eslint-config/node' {
-  const config: import('eslint').FlatConfig[];
+  const config: Config[];
   export default config;
 }
 
 declare module '@scope/eslint-config/react' {
-  const config: import('eslint').FlatConfig[];
+  const config: Config[];
   export default config;
 }
