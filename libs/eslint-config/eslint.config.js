@@ -1,8 +1,3 @@
-/* docs:
-- https://typescript-eslint.io/getting-started/typed-linting#shared-configurations
-- https://typescript-eslint.io/users/configs#disable-type-checked
-*/
-
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import eslintPluginCheckFile from 'eslint-plugin-check-file';
@@ -13,7 +8,7 @@ export const sharedLanguageOptions = {
   ecmaVersion: 2020,
   parserOptions: {
     projectService: true, // "typescript-eslint": enables linting with type information
-    tsconfigRootDir: import.meta.dirname, // for scoped package: uses "tsconfig.json" from consumer
+    tsconfigRootDir: import.meta.dirname, // scoped package: uses "tsconfig.json" from consumer
   },
 };
 
@@ -23,7 +18,7 @@ export default defineConfig([
     '**/coverage/',
     '**/migrations/',
     '**/resources/',
-    'eslint.config.d.ts',
+    'eslint.config.d.ts', // To avoid usage of "tsconfig.json"
   ]),
 
   {
@@ -34,8 +29,10 @@ export default defineConfig([
       tseslint.configs.stylisticTypeChecked, // "typescript-eslint": stylistic with type information
       eslintConfigPrettier, // Must be placed last to override other configs
     ],
-    plugins: { 'check-file': eslintPluginCheckFile },
     languageOptions: sharedLanguageOptions,
+    plugins: {
+      'check-file': eslintPluginCheckFile,
+    },
     rules: {
       // "eslint"
       'no-restricted-imports': [
