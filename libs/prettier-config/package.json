@@ -2,7 +2,13 @@
   "name": "@scope/prettier-config",
   "private": true,
   "type": "module",
-  "exports": "./prettier.config.js",
+  "exports": {
+    ".": "./.prettierrc.js",
+    "./react": "./.prettierrc.react.js"
+  },
+  "dependencies": {
+    "prettier-plugin-tailwindcss": "^0.7.1"
+  },
   "peerDependencies": {
     "prettier": "*"
   }
