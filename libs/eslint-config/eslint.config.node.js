@@ -1,6 +1,6 @@
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-import eslintBaseConfig, { sharedLanguageOptions } from './eslint.config';
+import eslintBaseConfig, { sharedLanguageOptions } from './eslint.config.js';
 
 export default defineConfig([
   {
