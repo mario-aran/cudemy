@@ -1,38 +1,44 @@
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
-import eslintPluginCheckFile from 'eslint-plugin-check-file';
-import { defineConfig, globalIgnores } from 'eslint/config';
+import checkFile from 'eslint-plugin-check-file';
+import { globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
 export const sharedLanguageOptions = {
   ecmaVersion: 2020,
   parserOptions: {
-    projectService: true, // "typescript-eslint": enables linting with type information
-    tsconfigRootDir: import.meta.dirname, // scoped package: uses "tsconfig.json" from consumer
+    projectService: true, // "typescript-eslint": Enables linting with type information
+    tsconfigRootDir: import.meta.dirname, // Scoped package: Forces use of consumer's "tsconfig.json"
   },
 };
 
-export default defineConfig([
+export const eslintBaseConfig = [
+  // ---------------------------
+  // IGNORES
+  // ---------------------------
+
   globalIgnores([
     '**/dist/',
     '**/coverage/',
     '**/migrations/',
     '**/resources/',
-    'eslint.config.d.ts', // To avoid usage of "tsconfig.json"
   ]),
 
+  // ---------------------------
+  // EXTENDED SETTINGS
+  // ---------------------------
+
+  eslint.configs.recommended,
+  tseslint.configs.strictTypeChecked, // "typescript-eslint": Strict with type information
+  tseslint.configs.stylisticTypeChecked, // "typescript-eslint": Stylistic with type information
+
+  // ---------------------------
+  // SETTINGS
+  // ---------------------------
+
   {
-    files: ['**/*.{ts,tsx,js,jsx}'],
-    extends: [
-      eslint.configs.recommended,
-      tseslint.configs.strictTypeChecked, // "typescript-eslint": strict with type information
-      tseslint.configs.stylisticTypeChecked, // "typescript-eslint": stylistic with type information
-      eslintConfigPrettier, // Must be placed last to override other configs
-    ],
     languageOptions: sharedLanguageOptions,
-    plugins: {
-      'check-file': eslintPluginCheckFile,
-    },
+    plugins: { 'check-file': checkFile },
     rules: {
       // "eslint"
       'no-restricted-imports': [
@@ -67,6 +73,20 @@ export default defineConfig([
     },
   },
 
-  // "typescript-eslint": disables linting with type information
-  { files: ['**/*.{js,jsx}'], extends: [tseslint.configs.disableTypeChecked] },
-]);
+  // ---------------------------
+  // OVERRIDES
+  // ---------------------------
+
+  {
+    files: ['**/*.{js,jsx,mjs,cjs}'],
+    extends: [
+      tseslint.configs.disableTypeChecked, // "typescript-eslint": Disables linting with type information
+    ],
+  },
+
+  // ---------------------------
+  // ESLINT-CONFIG-PRETTIER
+  // ---------------------------
+
+  eslintConfigPrettier, // Must be placed last to override other configs
+];
