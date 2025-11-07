@@ -4,16 +4,12 @@ import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import eslintBaseConfig, { sharedLanguageOptions } from './eslint.config.js';
 
-export default defineConfig([
-  {
-    extends: [
-      eslintBaseConfig,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ...sharedLanguageOptions,
-      globals: globals.browser,
-    },
-  },
-]);
+export default defineConfig(
+  // Extended configs
+  eslintBaseConfig,
+  reactHooks.configs['recommended-latest'],
+  reactRefresh.configs.vite,
+
+  // Settings
+  { languageOptions: { ...sharedLanguageOptions, globals: globals.browser } },
+);
