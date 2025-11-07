@@ -25,7 +25,7 @@ export const eslintBaseConfig = [
   ]),
 
   // ---------------------------
-  // EXTENDED SETTINGS
+  // EXTENDED CONFIGS
   // ---------------------------
 
   eslint.configs.recommended,

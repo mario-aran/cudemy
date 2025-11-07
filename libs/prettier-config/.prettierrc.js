@@ -1,10 +1,10 @@
 export default {
-  // editorconfig options
+  // Editorconfig options
   endOfLine: 'lf',
   useTabs: false,
   tabWidth: 2,
   printWidth: 80,
 
-  // prettier options
+  // Prettier options
   singleQuote: true,
 };
