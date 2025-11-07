@@ -1,5 +1,5 @@
 import globals from 'globals';
-import eslintBaseConfig, { sharedLanguageOptions } from './eslint.config.js';
+import { eslintBaseConfig, sharedLanguageOptions } from './eslint.config.js';
 
 export default [
   // Extended configs
