@@ -1,10 +1,9 @@
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import eslintBaseConfig, { sharedLanguageOptions } from './eslint.config.js';
 
-export default defineConfig(
+export default [
   // Extended configs
   eslintBaseConfig,
   reactHooks.configs['recommended-latest'],
@@ -12,4 +11,4 @@ export default defineConfig(
 
   // Settings
   { languageOptions: { ...sharedLanguageOptions, globals: globals.browser } },
-);
+];
