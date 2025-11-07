@@ -1,4 +1,4 @@
-// note: This file prevents the consumer from seeing "Could not find a declaration file for module"
+// note: This file prevents consumers from seeing the warning: "Could not find a declaration file for module"
 
 declare module '@scope/eslint-config/node' {
   const config: import('eslint/config').Config[];
