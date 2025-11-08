@@ -8,7 +8,6 @@ export const sharedLanguageOptions = {
   ecmaVersion: 2020,
   parserOptions: {
     projectService: true, // "typescript-eslint": Enables linting with type information
-    tsconfigRootDir: import.meta.dirname, // Scoped package: Forces use of consumer's "tsconfig.json"
   },
 };
 
