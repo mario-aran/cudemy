@@ -1,5 +1,5 @@
 import eslint from '@eslint/js';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import checkFile from 'eslint-plugin-check-file';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
@@ -12,7 +12,7 @@ export const sharedLanguageOptions = {
   },
 };
 
-export const eslintBaseConfig = defineConfig(
+export const eslintBaseConfig = defineConfig([
   // ---------------------------
   // IGNORES
   // ---------------------------
@@ -89,4 +89,4 @@ export const eslintBaseConfig = defineConfig(
   // ---------------------------
 
   eslintConfigPrettier, // Must be placed last to override other configs
-);
+]);
