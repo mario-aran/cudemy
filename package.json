@@ -1,8 +1,9 @@
 {
-  "name": "udemy",
+  "name": "cudemy",
   "private": true,
   "type": "module",
   "scripts": {
+    "dev:frontend": "pnpm --filter frontend run dev",
     "dev:services": "pnpm exec concurrently \"pnpm --filter services/courses run dev\" \"pnpm --filter services/media run dev\"",
     "clean": "find . -type d \\( -name 'node_modules' -o -name 'dist' -o -name 'coverage' \\) -prune -exec rm -rf {} +",
     "format:eol": "find . -type f -exec dos2unix {} +",
