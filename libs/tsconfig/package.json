@@ -2,7 +2,9 @@
   "name": "@scope/tsconfig",
   "private": true,
   "exports": {
-    ".": "./tsconfig.json",
-    "./build": "./tsconfig.build.json"
+    "./node": "./tsconfig.node.json"
+  },
+  "peerDependencies": {
+    "typescript": "*"
   }
 }
