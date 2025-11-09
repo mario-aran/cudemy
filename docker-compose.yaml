@@ -1,14 +1,4 @@
 services:
-  frontend:
-    image: node:24.11-bookworm-slim
-    restart: unless-stopped
-    ports:
-      - '5173:5173'
-    volumes:
-      - ./frontend:/app
-    working_dir: /app
-    command: sh -c "npm install && npm run dev"
-
   gateway:
     image: nginx:1.28-alpine
     restart: unless-stopped
@@ -25,30 +15,6 @@ services:
       - '15672:15672' # Management UI
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-
-  courses:
-    image: node:24.11-bookworm-slim
-    restart: unless-stopped
-    expose:
-      - '3000'
-    volumes:
-      - ./services/courses:/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true # To use tsx watch mode on docker
-    working_dir: /app
-    command: sh -c "npm install && npm run dev"
-
-  media:
-    image: node:24.11-bookworm-slim
-    restart: unless-stopped
-    expose:
-      - '3000'
-    volumes:
-      - ./services/media:/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true # To use tsx watch mode on docker
-    working_dir: /app
-    command: sh -c "npm install && npm run dev"
 
 volumes:
   rabbitmq_data:
