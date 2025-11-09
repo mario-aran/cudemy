@@ -1,1 +1,1 @@
-{ "extends": "@scope/tsconfig" }
+{ "extends": "@scope/tsconfig/node" }
