@@ -1,4 +1,8 @@
 {
   "name": "@scope/tsconfig",
-  "private": true
+  "private": true,
+  "exports": {
+    ".": "./tsconfig.json",
+    "./build": "./tsconfig.build.json"
+  }
 }
