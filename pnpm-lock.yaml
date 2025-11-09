@@ -17,6 +17,9 @@ importers:
       '@scope/prettier-config':
         specifier: workspace:*
         version: link:libs/prettier-config
+      '@scope/tsconfig':
+        specifier: workspace:*
+        version: link:libs/tsconfig
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
