@@ -124,7 +124,11 @@ importers:
         specifier: '*'
         version: 0.7.1(prettier@3.6.2)
 
-  libs/tsconfig: {}
+  libs/tsconfig:
+    dependencies:
+      typescript:
+        specifier: '*'
+        version: 5.9.3
 
   services/courses:
     dependencies:
