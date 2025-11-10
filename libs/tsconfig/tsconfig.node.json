@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     // Module
-    "target": "ES2023", // Controls emitted JS syntax features
-    "module": "ESNext", // Controls emitted module format
+    "target": "es2023", // Controls emitted JS syntax features
+    "module": "commonjs", // Controls emitted module format
     "esModuleInterop": true, // Allow default-style imports from CommonJS packages
 
     // Linting

@@ -1,7 +1,6 @@
 {
   "name": "@scope/tsconfig",
   "private": true,
-  "type": "module",
   "exports": {
     "./node": "./tsconfig.node.json"
   },
