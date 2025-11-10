@@ -1,1 +1,15 @@
-{ "extends": "@scope/tsconfig/node" }
+{
+  "extends": "@scope/tsconfig/node",
+  "compilerOptions": {
+    // File layout
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Path aliases
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@tests/*": ["tests/*"]
+    }
+  }
+}
