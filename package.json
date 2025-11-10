@@ -9,7 +9,7 @@
     "format:eol": "find . -type f -exec dos2unix {} +",
     "format": "prettier --write .",
     "lint": "eslint . --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "pnpm -r --parallel run typecheck"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
