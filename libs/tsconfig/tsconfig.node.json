@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     // Module
-    "module": "commonjs", // Allows both require and import
-    "target": "ES2020",
-    "esModuleInterop": true, // Import compatibility in "module: commonjs"
+    "target": "ES2023", // Controls emitted JS syntax features
+    "module": "ESNext", // Controls emitted module format
+    "esModuleInterop": true, // Allow default-style imports from CommonJS packages
 
     // Linting
     "strict": true, // Mandatory for most typescript-eslint rules
