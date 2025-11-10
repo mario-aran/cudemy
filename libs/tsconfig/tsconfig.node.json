@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    // File layout
-    "outDir": "./dist",
-
     // Module
     "module": "commonjs", // Allows both require and import
     "target": "ES2020",
@@ -15,13 +12,6 @@
     "noFallthroughCasesInSwitch": true, // On switch cases, prevents missing break or return
     "noUncheckedSideEffectImports": true, // On side-effect-only-imports, validate if file exists
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-
-    // Path aliases
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@tests/*": ["tests/*"]
-    }
+    "noUnusedParameters": true
   }
 }

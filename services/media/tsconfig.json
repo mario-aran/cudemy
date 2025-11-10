@@ -2,7 +2,6 @@
   "extends": "@scope/tsconfig/node",
   "compilerOptions": {
     // File layout
-    "rootDir": "./src",
     "outDir": "./dist",
 
     // Path aliases
