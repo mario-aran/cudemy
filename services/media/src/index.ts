@@ -1,5 +1,6 @@
 import express from 'express';
 import { PORT } from './config/env';
+import { logger } from './libs/logger/winston';
 
 const app = express();
 
@@ -8,5 +9,5 @@ app.use('/', (_, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Application started successfully on port ${String(PORT)}`);
+  logger.info(`Application started successfully on port ${String(PORT)}`);
 });
