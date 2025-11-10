@@ -1,7 +1,13 @@
 import express from 'express';
 
+const PORT = 3002;
+
 const app = express();
 
-app.listen(3002, () => {
-  console.log(3002);
+app.use('/', (_, res) => {
+  res.json({ message: 'Hello media' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Application started successfully on port ${String(PORT)}`);
 });
