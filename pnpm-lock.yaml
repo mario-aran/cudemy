@@ -17,9 +17,6 @@ importers:
       '@scope/prettier-config':
         specifier: workspace:*
         version: link:libs/prettier-config
-      '@scope/tsconfig':
-        specifier: workspace:*
-        version: link:libs/tsconfig
       eslint:
         specifier: ^9.39.1
         version: 9.39.1
@@ -44,15 +41,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.7.1
         version: 0.7.1(prettier@3.6.2)
-      tsc-alias:
-        specifier: ^1.8.16
-        version: 1.8.16
-      tsx:
-        specifier: ^4.20.6
-        version: 4.20.6
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
       typescript-eslint:
         specifier: ^8.46.4
         version: 8.46.4(eslint@9.39.1)(typescript@5.9.3)
@@ -142,6 +130,9 @@ importers:
         specifier: ^3.18.3
         version: 3.18.3
     devDependencies:
+      '@scope/tsconfig':
+        specifier: workspace:*
+        version: link:../../libs/tsconfig
       '@types/amqplib':
         specifier: ^0.10.8
         version: 0.10.8
@@ -157,6 +148,15 @@ importers:
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
+      tsc-alias:
+        specifier: ^1.8.16
+        version: 1.8.16
+      tsx:
+        specifier: ^4.20.6
+        version: 4.20.6
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
   services/media:
     dependencies:
@@ -176,6 +176,9 @@ importers:
         specifier: ^3.18.3
         version: 3.18.3
     devDependencies:
+      '@scope/tsconfig':
+        specifier: workspace:*
+        version: link:../../libs/tsconfig
       '@types/amqplib':
         specifier: ^0.10.8
         version: 0.10.8
@@ -191,6 +194,15 @@ importers:
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
+      tsc-alias:
+        specifier: ^1.8.16
+        version: 1.8.16
+      tsx:
+        specifier: ^4.20.6
+        version: 4.20.6
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
 packages:
 
@@ -948,8 +960,8 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  browserslist@4.27.0:
-    resolution: {integrity: sha512-AXVQwdhot1eqLihwasPElhX2tAZiBjWdJ9i/Zcj2S6QYIjkx62OKSfnobkriB81C3l4w0rVy3Nt4jaTBltYEpw==}
+  browserslist@4.28.0:
+    resolution: {integrity: sha512-tbydkR/CxfMwelN0vwdP/pLkDwyAASZ+VfWm4EOwlB6SWhx1sYnWLqo8N5j0rAzPfzfRaxt0mM/4wPU/Su84RQ==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -2010,7 +2022,7 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.28.5
       '@babel/helper-validator-option': 7.27.1
-      browserslist: 4.27.0
+      browserslist: 4.28.0
       lru-cache: 5.1.1
       semver: 6.3.1
 
@@ -2709,13 +2721,13 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  browserslist@4.27.0:
+  browserslist@4.28.0:
     dependencies:
       baseline-browser-mapping: 2.8.25
       caniuse-lite: 1.0.30001754
       electron-to-chromium: 1.5.249
       node-releases: 2.0.27
-      update-browserslist-db: 1.1.4(browserslist@4.27.0)
+      update-browserslist-db: 1.1.4(browserslist@4.28.0)
 
   buffer-more-ints@1.0.0: {}
 
@@ -3613,9 +3625,9 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  update-browserslist-db@1.1.4(browserslist@4.27.0):
+  update-browserslist-db@1.1.4(browserslist@4.28.0):
     dependencies:
-      browserslist: 4.27.0
+      browserslist: 4.28.0
       escalade: 3.2.0
       picocolors: 1.1.1
 
