@@ -1,3 +1,5 @@
+## docs: https://docs.docker.com/reference/compose-file/
+
 services:
   gateway:
     image: nginx:1.28-alpine
@@ -15,6 +17,9 @@ services:
       - '15672:15672' # Management UI
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=password
 
 volumes:
   rabbitmq_data:
