@@ -1,13 +1,12 @@
-import express from 'express';
+import { app } from './app';
 import { PORT } from './config/env';
 import { logger } from './libs/logger/winston';
+import { initRabbitMQ } from './libs/rabbitmq';
 
-const app = express();
+void (async () => {
+  await initRabbitMQ();
 
-app.use('/', (_, res) => {
-  res.json({ message: 'Hello courses' });
-});
-
-app.listen(PORT, () => {
-  logger.info(`Application started successfully on port ${String(PORT)}`);
-});
+  app.listen(PORT, () => {
+    logger.info(`Application started successfully on port ${String(PORT)}`);
+  });
+})();
