@@ -9,5 +9,9 @@ export const publishEvent = (
   const channel = getChannel();
   const message = Buffer.from(JSON.stringify(payload));
 
-  channel.publish(exchange, routingKey, message, { persistent: true });
+  channel.publish(exchange, routingKey, message, {
+    contentType: 'application/json',
+    persistent: true,
+    mandatory: true,
+  });
 };
