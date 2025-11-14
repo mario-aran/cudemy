@@ -8,8 +8,8 @@ import {
   QUEUES,
   RoutingKey,
 } from './constants';
-import { enrollmentToCoursesHandler } from './handlers/enrollment-to-courses.handler';
-import { mediaToCoursesHandler } from './handlers/media-to-courses.handler';
+import { enrollmentToCoursesHandler } from './message-handlers/enrollment-to-courses.handler';
+import { mediaToCoursesHandler } from './message-handlers/media-to-courses.handler';
 import { EventPayload, MessageHandlerProps } from './types';
 
 // ---------------------------
