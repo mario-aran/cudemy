@@ -9,14 +9,9 @@ app.get('/', (_, res) => {
 });
 
 app.get('/rabbit', (_, res) => {
-  const publishedEvent = publishEvent(
-    EXCHANGES.COURSES,
-    ROUTING_KEYS.LECTURE_CREATED,
-    {
-      message: 'Test rabbitmq',
-    },
-  );
-  if (!publishedEvent) throw new Error('Message not published');
+  publishEvent(EXCHANGES.COURSES, ROUTING_KEYS.LECTURE_CREATED, {
+    message: 'Test rabbitmq',
+  });
 
   res.status(201).send('courses.created published');
 });
