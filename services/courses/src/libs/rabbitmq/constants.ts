@@ -48,7 +48,7 @@ export const ROUTING_KEYS = {
 // DERIVED CONSTANTS
 // ---------------------------
 
-export const BINDINGS = {
+export const QUEUE_BINDINGS = {
   COURSES_TO_MEDIA: {
     queue: QUEUES.COURSES_TO_MEDIA,
     exchange: EXCHANGES.COURSES,
