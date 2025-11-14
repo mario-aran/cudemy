@@ -9,7 +9,7 @@ import {
   RoutingKey,
 } from './constants';
 import { enrollmentToCoursesHandler } from './handlers/enrollment-to-courses.handler';
-import { medialToCoursesHandler } from './handlers/media-to-courses.handler';
+import { mediaToCoursesHandler } from './handlers/media-to-courses.handler';
 
 // ---------------------------
 // VALUES
@@ -36,25 +36,23 @@ const createQueue = async (queue: Queue) => {
   await channel.assertQueue(queue, { durable: true });
 };
 
-const bindQueue = async ({
-  queue,
-  exchange,
-  routingKeys,
-}: {
+const bindQueue = async (obj: {
   queue: Queue;
   exchange: Exchange;
   routingKeys: RoutingKey[];
 }) => {
   const channel = getChannel();
 
-  for (const key of routingKeys) {
-    await channel.bindQueue(queue, exchange, key);
-  }
+  for (const key of obj.routingKeys)
+    await channel.bindQueue(obj.queue, obj.exchange, key);
 };
 
 const registerConsumer = async (
-  queue: string,
-  handler: (key: string, payload: unknown) => Promise<void> | void,
+  queue: Queue,
+  handler: (
+    routingKey: RoutingKey,
+    payload: Record<string, unknown>,
+  ) => Promise<void> | void,
   prefetch = 1,
 ) => {
   const channel = getChannel();
@@ -63,12 +61,15 @@ const registerConsumer = async (
   const onMessage = (msg: ConsumeMessage | null) => {
     if (!msg) return;
 
-    const key = msg.fields.routingKey;
-    const rawPayload = msg.content.toString();
-
     void (async () => {
       try {
-        await handler(key, JSON.parse(rawPayload));
+        const routingKey = msg.fields.routingKey as RoutingKey;
+        const payload = JSON.parse(msg.content.toString()) as Record<
+          string,
+          unknown
+        >;
+
+        await handler(routingKey, payload);
         channel.ack(msg);
       } catch {
         channel.nack(msg, false, false);
@@ -77,10 +78,6 @@ const registerConsumer = async (
   };
   await channel.consume(queue, onMessage, { noAck: false });
 };
-
-// ---------------------------
-// DERIVED UTILS
-// ---------------------------
 
 export const initRabbitMQ = async () => {
   // Channel
@@ -101,9 +98,24 @@ export const initRabbitMQ = async () => {
   await bindQueue(BINDINGS.ENROLLMENT_TO_COURSES);
 
   // Consumers
-  await registerConsumer(QUEUES.MEDIA_TO_COURSES, medialToCoursesHandler);
+  await registerConsumer(QUEUES.MEDIA_TO_COURSES, mediaToCoursesHandler);
   await registerConsumer(
     QUEUES.ENROLLMENT_TO_COURSES,
     enrollmentToCoursesHandler,
   );
+};
+
+export const publishEvent = (obj: {
+  exchange: Exchange;
+  routingKey: RoutingKey;
+  payload: Record<string, unknown>;
+}) => {
+  const channel = getChannel();
+  const content = Buffer.from(JSON.stringify(obj.payload));
+
+  channel.publish(obj.exchange, obj.routingKey, content, {
+    contentType: 'application/json',
+    persistent: true,
+    mandatory: true,
+  });
 };
