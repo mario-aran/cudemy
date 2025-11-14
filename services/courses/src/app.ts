@@ -9,8 +9,10 @@ app.get('/', (_, res) => {
 });
 
 app.get('/rabbit', (_, res) => {
-  publishEvent(EXCHANGES.COURSES, ROUTING_KEYS.LECTURE_CREATED, {
-    message: 'Test rabbitmq',
+  publishEvent({
+    exchange: EXCHANGES.COURSES,
+    routingKey: ROUTING_KEYS.COURSES.LECTURE_CREATED,
+    payload: { message: 'Test rabbitmq' },
   });
 
   res.status(201).send('courses.created published');
