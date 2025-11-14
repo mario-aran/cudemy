@@ -2,61 +2,72 @@
 // TYPES
 // ---------------------------
 
-export type Exchange = (typeof EXCHANGES)[keyof typeof EXCHANGES];
-export type RoutingKey = (typeof ROUTING_KEYS)[keyof typeof ROUTING_KEYS];
+type Values<T extends object> = T[keyof T];
+export type Exchange = Values<typeof EXCHANGES>;
+export type Queue = Values<typeof QUEUES>;
+
+type RKs = typeof ROUTING_KEYS;
+export type RoutingKey = { [K in keyof RKs]: RKs[K][keyof RKs[K]] }[keyof RKs];
 
 // ---------------------------
 // CONSTANTS
 // ---------------------------
 
+// Name pattern: domain
 export const EXCHANGES = {
   COURSES: 'courses',
   MEDIA: 'media',
   ENROLLMENT: 'enrollment',
 } as const;
 
+// Name pattern: producer.to.consumer
 export const QUEUES = {
-  COURSES_MEDIA: 'courses.media',
-  COURSES_ENROLLMENT: 'courses.enrollment',
-  MEDIA_COURSES: 'media.courses',
-  ENROLLMENT_COURSES: 'enrollment.courses',
+  COURSES_TO_MEDIA: 'courses.to.media',
+  COURSES_TO_ENROLLMENT: 'courses.to.enrollment',
+  MEDIA_TO_COURSES: 'media.to.courses',
+  ENROLLMENT_TO_COURSES: 'enrollment.to.courses',
 } as const;
 
+// Name pattern: domain.entity.action
 export const ROUTING_KEYS = {
-  LECTURE_CREATED: 'lecture.created',
-  LECTURE_DELETED: 'lecture.deleted',
-  ASSET_CREATED: 'asset.created',
-  ASSET_AVAILABLE: 'asset.available',
-  ASSET_DELETED: 'asset.deleted',
-  ENROLLMENT_CREATED: 'enrollment.created',
-  ENROLLMENT_CANCELLED: 'enrollment.cancelled',
+  COURSES: {
+    LECTURE_CREATED: 'courses.lecture.created',
+    LECTURE_DELETED: 'courses.lecture.deleted',
+  },
+  MEDIA: {
+    ASSET_CREATED: 'media.asset.created',
+    ASSET_AVAILABLE: 'media.asset.available',
+    ASSET_DELETED: 'media.asset.deleted',
+  },
+  ENROLLMENT: {
+    REGISTRATION_CREATED: 'enrollment.registration.created',
+    REGISTRATION_CANCELED: 'enrollment.registration.canceled',
+  },
 } as const;
 
 // ---------------------------
 // DERIVED CONSTANTS
 // ---------------------------
 
-export const BINDINGS = [
-  {
+export const BINDINGS = {
+  COURSES_TO_MEDIA: {
+    queue: QUEUES.COURSES_TO_MEDIA,
     exchange: EXCHANGES.COURSES,
-    queue: QUEUES.COURSES_MEDIA,
-    routingKeys: [ROUTING_KEYS.LECTURE_CREATED, ROUTING_KEYS.LECTURE_DELETED],
+    routingKeys: Object.values(ROUTING_KEYS.COURSES),
   },
-  {
+  COURSES_TO_ENROLLMENT: {
+    queue: QUEUES.COURSES_TO_ENROLLMENT,
+    exchange: EXCHANGES.COURSES,
+    routingKeys: Object.values(ROUTING_KEYS.COURSES),
+  },
+  MEDIA_TO_COURSES: {
+    queue: QUEUES.MEDIA_TO_COURSES,
     exchange: EXCHANGES.MEDIA,
-    queue: QUEUES.MEDIA_COURSES,
-    routingKeys: [
-      ROUTING_KEYS.ASSET_CREATED,
-      ROUTING_KEYS.ASSET_AVAILABLE,
-      ROUTING_KEYS.ASSET_DELETED,
-    ],
+    routingKeys: Object.values(ROUTING_KEYS.MEDIA),
   },
-  {
+  ENROLLMENT_TO_COURSES: {
+    queue: QUEUES.ENROLLMENT_TO_COURSES,
     exchange: EXCHANGES.ENROLLMENT,
-    queue: QUEUES.ENROLLMENT_COURSES,
-    routingKeys: [
-      ROUTING_KEYS.ENROLLMENT_CREATED,
-      ROUTING_KEYS.ENROLLMENT_CANCELLED,
-    ],
+    routingKeys: Object.values(ROUTING_KEYS.ENROLLMENT),
   },
-] as const;
+} as const;
