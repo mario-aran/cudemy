@@ -35,7 +35,6 @@ export const ROUTING_KEYS = {
     LECTURE_DELETED: 'courses.lecture.deleted',
   },
   MEDIA: {
-    ASSET_CREATED: 'media.asset.created',
     ASSET_AVAILABLE: 'media.asset.available',
     ASSET_DELETED: 'media.asset.deleted',
   },
