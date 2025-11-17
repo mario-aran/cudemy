@@ -11,7 +11,7 @@ void (async () => {
   await initRabbitMQ();
 
   app.listen(PORT, () => {
-    logger.info('Application started successfully on port:', PORT);
+    logger.info('Application started successfully on port', PORT);
   });
 })();
 
