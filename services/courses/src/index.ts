@@ -1,7 +1,8 @@
 import { app } from './app';
 import { PORT } from './config/env';
 import { logger } from './libs/logger/winston';
-import { initRabbitMQ, shutdownRabbitMQ } from './libs/rabbitmq/connection';
+import { initRabbitMQ } from './libs/rabbitmq';
+import { shutdownRabbitMQ } from './libs/rabbitmq/connection';
 
 // ---------------------------
 // STARTUP
@@ -18,9 +19,8 @@ void (async () => {
 
   // Start server
   const server = app.listen(PORT, () =>
-    logger.info('Application started successfully on port', PORT),
+    logger.info('Application started on port', PORT),
   );
-
   server.on('error', (err) => {
     logger.error('startup:failed', err);
     process.exit(1);
@@ -31,16 +31,15 @@ void (async () => {
 // SHUTDOWN
 // ---------------------------
 
-const gracefulShutdown = () => {
+const gracefulShutdown = () =>
   void (async () => {
     logger.info('shutdown:start');
 
     // Shutdown resources
-    const resources = [shutdownRabbitMQ];
-
-    for (const shutdownResource of resources) {
+    const shutdownFunctions = [shutdownRabbitMQ];
+    for (const shutdown of shutdownFunctions) {
       try {
-        await shutdownResource();
+        await shutdown();
       } catch (err) {
         logger.error('shutdown:error', err);
       }
@@ -50,7 +49,5 @@ const gracefulShutdown = () => {
     logger.info('shutdown:complete');
     process.exit(0);
   })();
-};
-
 process.on('SIGINT', gracefulShutdown);
 process.on('SIGTERM', gracefulShutdown);
