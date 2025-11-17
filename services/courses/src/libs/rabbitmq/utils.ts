@@ -1,3 +1,4 @@
+import { logger } from '@/libs/logger/winston';
 import { ConsumeMessage } from 'amqplib';
 import { getChannel } from './connection';
 import { Exchange, Queue, RoutingKey } from './constants';
@@ -12,7 +13,7 @@ export const assertExchange = async (exchange: Exchange) => {
   await channel.assertExchange(exchange, 'direct', { durable: true });
 };
 
-export const setupQueue = async (obj: {
+export const assertAndBindQueue = async (obj: {
   queue: Queue;
   exchange: Exchange;
   routingKeys: RoutingKey[];
@@ -74,7 +75,7 @@ export const startConsumer = async (
         });
         channel.ack(msg);
       } catch (err) {
-        console.error('Message processing failed', err);
+        logger.error('Message processing failed', err);
         channel.nack(msg, false, false);
       }
     })();
