@@ -12,15 +12,35 @@ export const assertExchange = async (exchange: Exchange) => {
   await channel.assertExchange(exchange, 'direct', { durable: true });
 };
 
-export const bindQueue = async (obj: {
+export const setupQueue = async (obj: {
   queue: Queue;
   exchange: Exchange;
   routingKeys: RoutingKey[];
 }) => {
   const channel = getChannel();
+
+  await channel.assertQueue(obj.queue, {
+    durable: true,
+    arguments: { 'x-dead-letter-exchange': `${obj.queue}.dlx` },
+  });
+
   for (const key of obj.routingKeys) {
     await channel.bindQueue(obj.queue, obj.exchange, key);
   }
+};
+
+export const setupDLQ = async (queue: string) => {
+  const channel = getChannel();
+  const dlx = `${queue}.dlx`;
+  const dlq = `${queue}.dlq`;
+
+  await channel.assertExchange(
+    dlx,
+    'fanout', // Ignores routingKey
+    { durable: true },
+  );
+  await channel.assertQueue(dlq, { durable: true });
+  await channel.bindQueue(dlq, dlx, '');
 };
 
 // ---------------------------
