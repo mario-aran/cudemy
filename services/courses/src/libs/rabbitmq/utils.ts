@@ -100,6 +100,6 @@ export const publishEvent = (obj: {
   channel.publish(obj.exchange, obj.routingKey, content, {
     contentType: 'application/json', // Marks payload as JSON
     persistent: true, // Survives broker restarts
-    mandatory: true, // Trigger return event if unroutable
+    mandatory: true, // Channel emits 'return' event on unroutable messages
   });
 };
