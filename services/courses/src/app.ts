@@ -1,6 +1,6 @@
 import express from 'express';
-import { publishEvent } from './libs/rabbitmq/connection';
 import { EXCHANGES, ROUTING_KEYS } from './libs/rabbitmq/constants';
+import { publishEvent } from './libs/rabbitmq/utils';
 
 export const app = express();
 
