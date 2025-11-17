@@ -3,21 +3,12 @@ import { MessageHandlerProps } from '@/libs/rabbitmq/types';
 
 const { REGISTRATION_CREATED, REGISTRATION_CANCELED } = ROUTING_KEYS.ENROLLMENT;
 
-interface RegistrationCreatedPayload {
+interface RegistrationPayload {
   id: string;
 }
 
-interface RegistrationCanceledPayload {
-  name: string;
-}
-
-const registrationCreated = (payload: RegistrationCreatedPayload) => {
-  return payload.id;
-};
-
-const registrationCanceled = (payload: RegistrationCanceledPayload) => {
-  return payload.name;
-};
+const registrationCreated = (payload: RegistrationPayload) => payload;
+const registrationCanceled = (payload: RegistrationPayload) => payload;
 
 export const enrollmentToCoursesHandler = ({
   routingKey,
@@ -25,10 +16,10 @@ export const enrollmentToCoursesHandler = ({
 }: MessageHandlerProps) => {
   switch (routingKey) {
     case REGISTRATION_CREATED:
-      registrationCreated(payload as unknown as RegistrationCreatedPayload);
+      registrationCreated(payload as unknown as RegistrationPayload);
       break;
     case REGISTRATION_CANCELED:
-      registrationCanceled(payload as unknown as RegistrationCanceledPayload);
+      registrationCanceled(payload as unknown as RegistrationPayload);
       break;
   }
 };
