@@ -1,6 +1,6 @@
-import { getChannels } from './connection';
-import { Exchange, RoutingKey } from './constants';
-import { EventPayload } from './types';
+import { getChannels } from '@/libs/rabbitmq/connection';
+import { Exchange, RoutingKey } from '@/libs/rabbitmq/constants';
+import { EventPayload } from '@/libs/rabbitmq/types';
 
 export const publishEvent = async (obj: {
   exchange: Exchange;
