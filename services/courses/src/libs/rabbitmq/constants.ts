@@ -13,14 +13,14 @@ export type RoutingKey = { [K in keyof RKs]: RKs[K][keyof RKs[K]] }[keyof RKs];
 // CONSTANTS
 // ---------------------------
 
-// Name pattern: domain
+// Pattern: domain
 export const EXCHANGES = {
   COURSES: 'courses',
   MEDIA: 'media',
   ENROLLMENT: 'enrollment',
 } as const;
 
-// Name pattern: producer.to.consumer
+// Pattern: producer.to.consumer
 export const QUEUES = {
   COURSES_TO_MEDIA: 'courses.to.media',
   COURSES_TO_ENROLLMENT: 'courses.to.enrollment',
@@ -28,7 +28,7 @@ export const QUEUES = {
   ENROLLMENT_TO_COURSES: 'enrollment.to.courses',
 } as const;
 
-// Name pattern: domain.entity.action
+// Pattern: domain.entity.action
 export const ROUTING_KEYS = {
   COURSES: {
     LECTURE_CREATED: 'courses.lecture.created',
