@@ -1,66 +1,69 @@
 import { logger } from '@/libs/logger/winston';
 import { ConsumeMessage } from 'amqplib';
-import { getChannel } from './connection';
+import { getChannels } from './connection';
 import { Exchange, Queue, RoutingKey } from './constants';
 import { EventPayload, MessageHandlerProps } from './types';
 
 // ---------------------------
-// DECLARATIONS
+// PRODUCERS
 // ---------------------------
 
-export const assertExchange = async (exchange: Exchange) => {
-  const channel = getChannel();
-  await channel.assertExchange(exchange, 'direct', { durable: true });
+export const assertProducerExchange = async (exchange: Exchange) => {
+  const { producerChannel } = getChannels();
+  await producerChannel.assertExchange(exchange, 'direct', { durable: true });
 };
 
-export const assertAndBindQueue = async (obj: {
-  queue: Queue;
+export const publishEvent = async (obj: {
   exchange: Exchange;
-  routingKeys: RoutingKey[];
+  routingKey: RoutingKey;
+  payload: EventPayload;
 }) => {
-  const channel = getChannel();
+  const { producerChannel } = getChannels();
+  const content = Buffer.from(JSON.stringify(obj.payload));
 
-  await channel.assertQueue(obj.queue, {
-    durable: true,
-    arguments: { 'x-dead-letter-exchange': `${obj.queue}.dlx` },
+  producerChannel.publish(obj.exchange, obj.routingKey, content, {
+    contentType: 'application/json', // Marks payload as JSON
+    persistent: true, // Survives broker restarts when enqueued in a durable queue
   });
-
-  for (const key of obj.routingKeys) {
-    await channel.bindQueue(obj.queue, obj.exchange, key);
-  }
-};
-
-export const setupDLQ = async (queue: string) => {
-  const channel = getChannel();
-  const dlx = `${queue}.dlx`;
-  const dlq = `${queue}.dlq`;
-
-  await channel.assertExchange(
-    dlx,
-    'fanout', // Ignores routingKey
-    { durable: true },
-  );
-  await channel.assertQueue(dlq, { durable: true });
-  await channel.bindQueue(dlq, dlx, '');
+  await producerChannel.waitForConfirms(); // Throws if broker fails to enqueue the message
 };
 
 // ---------------------------
 // CONSUMERS
 // ---------------------------
 
+export const assertConsumerExchange = async (exchange: Exchange) => {
+  const { consumerChannel } = getChannels();
+  await consumerChannel.assertExchange(exchange, 'direct', { durable: true });
+};
+
+export const setupConsumerQueue = async (obj: {
+  queue: Queue;
+  exchange: Exchange;
+  routingKeys: RoutingKey[];
+}) => {
+  const { consumerChannel } = getChannels();
+
+  await consumerChannel.assertQueue(obj.queue, { durable: true });
+
+  for (const key of obj.routingKeys) {
+    await consumerChannel.bindQueue(obj.queue, obj.exchange, key);
+  }
+};
+
 export const startConsumer = async (
   queue: Queue,
   handler: (props: MessageHandlerProps) => Promise<void> | void,
   prefetch = 1,
 ) => {
-  const channel = getChannel();
-  await channel.prefetch(prefetch);
+  const { consumerChannel } = getChannels();
+  await consumerChannel.prefetch(prefetch);
 
   const onMessage = (msg: ConsumeMessage | null) => {
     if (!msg) return;
 
     if (msg.properties.contentType !== 'application/json') {
-      channel.nack(msg, false, false);
+      consumerChannel.nack(msg, false, false);
       return;
     }
 
@@ -73,33 +76,14 @@ export const startConsumer = async (
             msg.content.toString(),
           ) as MessageHandlerProps['payload'],
         });
-        channel.ack(msg);
+        consumerChannel.ack(msg);
       } catch (err) {
-        logger.error('Message processing failed', err);
-        channel.nack(msg, false, false);
+        logger.error('rabbitmq:error', err);
+        consumerChannel.nack(msg, false, false);
       }
     })();
   };
-  await channel.consume(queue, onMessage, {
+  await consumerChannel.consume(queue, onMessage, {
     noAck: false, // Messages require manual acknowledgment
-  });
-};
-
-// ---------------------------
-// PRODUCERS
-// ---------------------------
-
-export const publishEvent = (obj: {
-  exchange: Exchange;
-  routingKey: RoutingKey;
-  payload: EventPayload;
-}) => {
-  const channel = getChannel();
-  const content = Buffer.from(JSON.stringify(obj.payload));
-
-  channel.publish(obj.exchange, obj.routingKey, content, {
-    contentType: 'application/json', // Marks payload as JSON
-    persistent: true, // Survives broker restarts
-    mandatory: true, // Channel emits 'return' event on unroutable messages
   });
 };
