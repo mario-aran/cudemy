@@ -1,4 +1,6 @@
-## Add what's not listed in ".gitignore"
+## note: Add what's not listed in ".gitignore"
+## docs: https://prettier.io/docs/ignore
+
 **/migrations
 **/resources
 **/pnpm-lock.yaml
