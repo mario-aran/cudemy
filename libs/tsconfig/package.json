@@ -5,6 +5,8 @@
     "./node": "./tsconfig.node.json"
   },
   "peerDependencies": {
+    "tsc-alias": "*",
+    "tsx": "*",
     "typescript": "*"
   }
 }
