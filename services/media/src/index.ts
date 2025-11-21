@@ -26,23 +26,23 @@ import { logger } from './libs/logger/winston';
 // SHUTDOWN
 // ---------------------------
 
-// const gracefulShutdown = () =>
-//   void (async () => {
-//     logger.info('shutdown:start');
+const gracefulShutdown = () =>
+  void (() => {
+    logger.info('shutdown:start');
 
-//     // Shutdown resources
-//     const shutdownFunctions = [];
-//     for (const shutdown of shutdownFunctions) {
-//       try {
-//         await shutdown();
-//       } catch (err) {
-//         logger.error('shutdown:error', err);
-//       }
-//     }
+    // Shutdown resources
+    // const shutdownFunctions = [];
+    // for (const shutdown of shutdownFunctions) {
+    //   try {
+    //     await shutdown();
+    //   } catch (err) {
+    //     logger.error('shutdown:error', err);
+    //   }
+    // }
 
-//     // Process exit
-//     logger.info('shutdown:complete');
-//     process.exit(0);
-//   })();
-// process.on('SIGINT', gracefulShutdown);
-// process.on('SIGTERM', gracefulShutdown);
+    // Process exit
+    logger.info('shutdown:complete');
+    process.exit(0);
+  })();
+process.on('SIGINT', gracefulShutdown);
+process.on('SIGTERM', gracefulShutdown);
