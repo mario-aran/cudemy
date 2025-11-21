@@ -18,7 +18,7 @@ Start dev
 - `pnpm run dev:frontend`: Run frontend in development
 - `pnpm run dev:services`: Run all microservices in development
 
-Add packages
+Install packages
 
 - `pnpm add -w <package_name>`: (Optional) Add package to workspace root
 - `pnpm add --workspace <scoped_package_name>`: (Optional) Add scoped package
