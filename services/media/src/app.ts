@@ -1,7 +1,17 @@
 import express from 'express';
+import { morganInit } from './libs/logger/morgan';
+import { routes } from './routes';
+
+// ---------------------------
+// VALUES
+// ---------------------------
 
 export const app = express();
 
-app.use('/', (_, res) => {
-  res.json({ message: 'Hello media' });
-});
+// ---------------------------
+// MIDDLEWARES
+// ---------------------------
+
+app.use(morganInit);
+app.use(express.json()); // Body parser
+app.use(routes); // Must be placed after req middlewares
