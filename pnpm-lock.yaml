@@ -109,6 +109,25 @@ importers:
         specifier: '*'
         version: 8.47.0(eslint@9.39.1)(typescript@5.9.3)
 
+  packages/logger:
+    dependencies:
+      morgan:
+        specifier: ^1.10.1
+        version: 1.10.1
+      winston:
+        specifier: ^3.18.3
+        version: 3.18.3
+    devDependencies:
+      '@types/morgan':
+        specifier: ^1.9.10
+        version: 1.9.10
+      '@types/node':
+        specifier: ^24.10.1
+        version: 24.10.1
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   packages/prettier-config:
     dependencies:
       prettier:
@@ -120,15 +139,13 @@ importers:
 
   packages/rabbitmq:
     dependencies:
-      '@scope/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@types/amqplib':
-        specifier: '*'
-        version: 0.10.8
       amqplib:
-        specifier: '*'
+        specifier: ^0.10.9
         version: 0.10.9
+    devDependencies:
+      '@types/amqplib':
+        specifier: ^0.10.8
+        version: 0.10.8
 
   packages/tsconfig:
     dependencies:
@@ -160,9 +177,6 @@ importers:
         specifier: ^3.18.3
         version: 3.18.3
     devDependencies:
-      '@scope/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       '@types/amqplib':
         specifier: ^0.10.8
         version: 0.10.8
@@ -178,61 +192,28 @@ importers:
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
-      tsc-alias:
-        specifier: ^1.8.16
-        version: 1.8.16
-      tsx:
-        specifier: ^4.20.6
-        version: 4.20.6
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
 
   services/media:
     dependencies:
-      amqplib:
-        specifier: ^0.10.9
-        version: 0.10.9
+      '@scope/logger':
+        specifier: workspace:*
+        version: link:../../packages/logger
       express:
         specifier: ^5.1.0
         version: 5.1.0
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
-      morgan:
-        specifier: ^1.10.1
-        version: 1.10.1
-      winston:
-        specifier: ^3.18.3
-        version: 3.18.3
     devDependencies:
-      '@scope/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@types/amqplib':
-        specifier: ^0.10.8
-        version: 0.10.8
       '@types/express':
         specifier: ^5.0.5
         version: 5.0.5
-      '@types/morgan':
-        specifier: ^1.9.10
-        version: 1.9.10
       '@types/node':
         specifier: ^24.10.1
         version: 24.10.1
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
-      tsc-alias:
-        specifier: ^1.8.16
-        version: 1.8.16
-      tsx:
-        specifier: ^4.20.6
-        version: 4.20.6
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
 
 packages:
 
