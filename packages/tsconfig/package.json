@@ -1,9 +1,6 @@
 {
   "name": "@scope/tsconfig",
   "private": true,
-  "exports": {
-    "./node": "./tsconfig.node.json"
-  },
   "peerDependencies": {
     "tsc-alias": "*",
     "tsx": "*",
