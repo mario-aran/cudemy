@@ -4,12 +4,12 @@
   "type": "module",
   "exports": {
     "./node": {
-      "types": "./eslint.config.d.ts",
-      "default": "./eslint.config.node.js"
+      "default": "./eslint.config.node.js",
+      "types": "./eslint.config.d.ts"
     },
     "./react": {
-      "types": "./eslint.config.d.ts",
-      "default": "./eslint.config.react.js"
+      "default": "./eslint.config.react.js",
+      "types": "./eslint.config.d.ts"
     }
   },
   "peerDependencies": {

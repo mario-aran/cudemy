@@ -108,6 +108,9 @@ importers:
 
   packages/rabbitmq:
     dependencies:
+      '@scope/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/amqplib':
         specifier: '*'
         version: 0.10.8
