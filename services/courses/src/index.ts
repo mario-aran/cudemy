@@ -1,8 +1,7 @@
 import { app } from './app';
 import { PORT } from './config/env';
 import { logger } from './libs/logger/winston';
-import { initRabbitMQ } from './libs/rabbitmq';
-import { shutdownRabbitMQ } from './libs/rabbitmq/connection';
+import { initRabbitMQ, shutdownRabbitMQ } from './libs/rabbitmq';
 
 // ---------------------------
 // STARTUP
