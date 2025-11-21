@@ -1,5 +1,5 @@
 {
-  "extends": "@scope/tsconfig/node",
+  "extends": "@scope/tsconfig/tsconfig.node.json",
   "compilerOptions": {
     // File layout
     "outDir": "./dist",

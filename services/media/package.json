@@ -1,7 +1,6 @@
 {
   "name": "media",
   "private": true,
-  "version": "0.0.0",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "rm -rf dist && tsc -p tsconfig.build.json && tsc-alias",
@@ -16,14 +15,10 @@
     "winston": "^3.18.3"
   },
   "devDependencies": {
-    "@scope/tsconfig": "workspace:*",
     "@types/amqplib": "^0.10.8",
     "@types/express": "^5.0.5",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.10.1",
-    "dotenv": "^17.2.3",
-    "tsc-alias": "^1.8.16",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "dotenv": "^17.2.3"
   }
 }
