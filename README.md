@@ -1,8 +1,13 @@
-## Instructions
+# PNPM + Workspace
+
+This template was created manually.
+
+## Commands
 
 Prepare code
 
 - `pnpm run clean`: Delete git ignored files
+- `pnpm run format:eol`: (Optional) Convert all files to LF
 - `pnpm install`: Install dependencies
 - `pnpm approve-builds`: (Optional) Approve post-install scripts
 - `pnpm up --latest -r --interactive`: (Optional) Update dependencies to the last version
@@ -22,3 +27,13 @@ Install packages
 
 - `pnpm add -w <package_name>`: (Optional) Add package to workspace root
 - `pnpm add --workspace <scoped_package_name>`: (Optional) Add scoped package
+
+## Configs
+
+- [x] .editorconfig
+- [x] .gitignore
+- [x] .prettierignore | .prettierrc
+- [x] docker-compose.yaml
+- [x] eslint.config.js
+- [x] package.json | pnpm-lock.yaml | pnpm-workspace.yaml
+- [x] README.md
