@@ -1,6 +1,5 @@
 // docs: https://github.com/winstonjs/winston?tab=readme-ov-file#logging
 
-import { isProduction, isTest } from '@/config/env';
 import winston from 'winston';
 
 const consoleFormat = winston.format.combine(
@@ -11,8 +10,9 @@ const consoleFormat = winston.format.combine(
   ),
 );
 
-export const logger = winston.createLogger({
-  silent: isTest, // Prevent logging during testing
-  level: isProduction ? 'http' : 'debug', // Prevent verbose logs in production
-  transports: [new winston.transports.Console({ format: consoleFormat })],
-});
+export const createLogger = (obj: { isSilent: boolean; isVerbose: boolean }) =>
+  winston.createLogger({
+    silent: obj.isSilent, // Enable/disable logs
+    level: obj.isVerbose ? 'debug' : 'http', // Enable/disable verbose logs
+    transports: [new winston.transports.Console({ format: consoleFormat })],
+  });
