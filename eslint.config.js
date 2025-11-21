@@ -4,7 +4,7 @@ import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
   {
-    files: ['services/**/*'],
+    files: ['{services,packages}/**/*'],
     extends: [eslintConfigNode],
   },
   {
