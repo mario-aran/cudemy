@@ -161,31 +161,16 @@ importers:
 
   services/courses:
     dependencies:
-      amqplib:
-        specifier: ^0.10.9
-        version: 0.10.9
       express:
         specifier: ^5.1.0
         version: 5.1.0
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
-      morgan:
-        specifier: ^1.10.1
-        version: 1.10.1
-      winston:
-        specifier: ^3.18.3
-        version: 3.18.3
     devDependencies:
-      '@types/amqplib':
-        specifier: ^0.10.8
-        version: 0.10.8
       '@types/express':
         specifier: ^5.0.5
         version: 5.0.5
-      '@types/morgan':
-        specifier: ^1.9.10
-        version: 1.9.10
       '@types/node':
         specifier: ^24.10.1
         version: 24.10.1
