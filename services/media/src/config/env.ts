@@ -34,4 +34,8 @@ const getRequiredEnv = (key: string) => {
 // ---------------------------
 
 export const PORT = Number(getRequiredEnv('PORT'));
+export const DATABASE_URL = getRequiredEnv('DATABASE_URL');
+export const STORAGE_ENDPOINT = getRequiredEnv('STORAGE_ENDPOINT');
+export const STORAGE_ACCESS_KEY = getRequiredEnv('STORAGE_ACCESS_KEY');
+export const STORAGE_SECRET_KEY = getRequiredEnv('STORAGE_SECRET_KEY');
 export const RABBITMQ_URL = getRequiredEnv('RABBITMQ_URL');
