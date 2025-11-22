@@ -65,10 +65,7 @@ export const eslintBaseConfig = defineConfig([
         { '**/*.ts': 'KEBAB_CASE' },
         { ignoreMiddleExtensions: true },
       ],
-      'check-file/folder-naming-convention': [
-        'error',
-        { '{src,tests}/**': 'KEBAB_CASE' },
-      ],
+      'check-file/folder-naming-convention': ['error', { '**/': 'KEBAB_CASE' }],
     },
   },
 
