@@ -4,11 +4,11 @@ import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
   {
-    files: ['{services,packages}/**/*'],
-    extends: [eslintConfigNode],
-  },
-  {
     files: ['frontend/**/*'],
     extends: [eslintConfigReact],
+  },
+  {
+    files: ['{services,packages}/**/*'],
+    extends: [eslintConfigNode],
   },
 ]);
