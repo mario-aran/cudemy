@@ -23,10 +23,6 @@ Start dev
 - `pnpm run dev:frontend`: Run frontend in development
 - `pnpm run dev:services`: Run all microservices in development
 
-Start prod
-
-- `pnpm run build:packages`: Build all shared packages
-
 Install packages
 
 - `pnpm add -w <package_name>`: (Optional) Add package to workspace root
