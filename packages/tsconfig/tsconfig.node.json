@@ -2,12 +2,12 @@
   "compilerOptions": {
     // Module
     "target": "es2023", // Emitted JS syntax features
-    "module": "esnext", // Emitted module format
-    "moduleResolution": "nodenext", // Allows sharing packages with ts files in dev
+    "module": "nodenext", // Emitted module format. Must match moduleResolution
+    "moduleResolution": "nodenext", // Allows you to import .ts files directly across workspace
     "esModuleInterop": true, // Allow default-style imports from CommonJS packages
     "useDefineForClassFields": true, // Modern class field
 
-    // Strictness
+    // Type checking
     "strict": true, // Mandatory for most typescript-eslint rules
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
