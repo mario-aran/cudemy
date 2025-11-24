@@ -2,7 +2,7 @@
   "name": "media",
   "private": true,
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx watch --conditions=development src/index.ts",
     "build": "tsc --build --clean && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit"

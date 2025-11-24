@@ -1,4 +1,4 @@
-/* endpoints:
+/* Endpoints:
 GET    /files/:id/download -> Generate and return a signed download URL
 POST   /files              -> Create file metadata and return a signed upload URL + file ID
 */
