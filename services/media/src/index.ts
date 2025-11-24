@@ -14,7 +14,7 @@ import { logger } from './libs/logger';
   // }
 
   const server = app.listen(PORT, () =>
-    logger.info('startup:success on port', PORT),
+    logger.info(`startup:success on port ${String(PORT)}`),
   );
   server.on('error', (err) => {
     logger.error('startup:failed', err);
