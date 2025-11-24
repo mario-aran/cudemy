@@ -1,11 +1,8 @@
 {
   "extends": "@scope/tsconfig/tsconfig.node.json",
   "compilerOptions": {
-    // File layout
-    "outDir": "./dist",
-
     // Path aliases
-    "baseUrl": ".",
+    "baseUrl": ".", // Must be set for path aliases to work
     "paths": {
       "@/*": ["src/*"],
       "@tests/*": ["tests/*"]
