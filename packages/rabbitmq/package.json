@@ -8,13 +8,6 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "scripts": {
-    "build": "rm -rf dist && tsc",
-    "pack": "pnpm build && pnpm pack"
-  },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "amqplib": "^0.10.9"
   },
