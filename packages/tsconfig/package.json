@@ -2,8 +2,6 @@
   "name": "@scope/tsconfig",
   "private": true,
   "peerDependencies": {
-    "tsc-alias": "*",
-    "tsx": "*",
     "typescript": "*"
   }
 }
