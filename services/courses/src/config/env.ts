@@ -34,3 +34,5 @@ const getRequiredEnv = (key: string) => {
 // ---------------------------
 
 export const PORT = Number(getRequiredEnv('PORT'));
+export const DATABASE_URL = getRequiredEnv('DATABASE_URL');
+export const RABBITMQ_URL = getRequiredEnv('RABBITMQ_URL');
