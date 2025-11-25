@@ -16,7 +16,9 @@
     "winston": "^3.18.3"
   },
   "devDependencies": {
+    "@scope/tsconfig": "workspace:*",
     "@types/morgan": "^1.9.10",
-    "@types/node": "^24.10.1"
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
   }
 }
