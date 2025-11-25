@@ -6,10 +6,9 @@ This template was created manually.
 
 Prepare code
 
-- `pnpm run clean`: Delete git ignored files
+- `pnpm run clean`: Delete files ignored by git
 - `pnpm run format:eol`: (Optional) Convert all files to LF
 - `pnpm install`: Install dependencies
-- `pnpm approve-builds`: (Optional) Approve post-install scripts
 - `pnpm up --latest -r --interactive`: (Optional) Update dependencies to the last version
 
 Format code
@@ -23,12 +22,18 @@ Start dev
 - `pnpm run dev:frontend`: Run frontend in development
 - `pnpm run dev:services`: Run all microservices in development
 
+Start prod
+
+- `pnpm run build`: Build all packages
+- `pnpm run start:services`: Run all microservices in production
+
 Install packages
 
 - `pnpm add -w <package_name>`: (Optional) Add package to workspace root
 - `pnpm add --workspace <scoped_package_name>`: (Optional) Add scoped package
+- `pnpm approve-builds`: (Optional) Approve post-install scripts
 
-## Configs
+## Config files
 
 - [x] .editorconfig
 - [x] .gitignore
