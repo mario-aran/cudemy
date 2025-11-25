@@ -17,9 +17,6 @@ importers:
       '@scope/prettier-config':
         specifier: workspace:*
         version: link:packages/prettier-config
-      '@scope/tsconfig':
-        specifier: workspace:*
-        version: link:packages/tsconfig
       eslint:
         specifier: ^9.39.1
         version: 9.39.1
@@ -44,15 +41,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.7.1
         version: 0.7.1(prettier@3.6.2)
-      tsc-alias:
-        specifier: ^1.8.16
-        version: 1.8.16
-      tsx:
-        specifier: ^4.20.6
-        version: 4.20.6
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
       typescript-eslint:
         specifier: ^8.48.0
         version: 8.48.0(eslint@9.39.1)(typescript@5.9.3)
@@ -78,6 +66,9 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^4.2.2
         version: 4.2.2(vite@7.2.4(@types/node@24.10.1)(tsx@4.20.6))
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
       vite:
         specifier: ^7.2.4
         version: 7.2.4(@types/node@24.10.1)(tsx@4.20.6)
@@ -118,12 +109,18 @@ importers:
         specifier: ^3.18.3
         version: 3.18.3
     devDependencies:
+      '@scope/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/morgan':
         specifier: ^1.9.10
         version: 1.9.10
       '@types/node':
         specifier: ^24.10.1
         version: 24.10.1
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/prettier-config:
     dependencies:
@@ -140,9 +137,15 @@ importers:
         specifier: ^0.10.9
         version: 0.10.9
     devDependencies:
+      '@scope/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/amqplib':
         specifier: ^0.10.8
         version: 0.10.8
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/tsconfig:
     dependencies:
@@ -168,6 +171,9 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
     devDependencies:
+      '@scope/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       '@types/express':
         specifier: ^5.0.5
         version: 5.0.5
@@ -177,6 +183,15 @@ importers:
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
+      tsc-alias:
+        specifier: ^1.8.16
+        version: 1.8.16
+      tsx:
+        specifier: ^4.20.6
+        version: 4.20.6
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
   services/media:
     dependencies:
@@ -1098,8 +1113,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.259:
-    resolution: {integrity: sha512-I+oLXgpEJzD6Cwuwt1gYjxsDmu/S/Kd41mmLA3O+/uH2pFRO/DvOjUyGozL8j3KeLV6WyZ7ssPwELMsXCcsJAQ==}
+  electron-to-chromium@1.5.260:
+    resolution: {integrity: sha512-ov8rBoOBhVawpzdre+Cmz4FB+y66Eqrk6Gwqd8NGxuhv99GQ8XqMAr351KEkOt7gukXWDg6gJWEMKgL2RLMPtA==}
 
   enabled@2.0.0:
     resolution: {integrity: sha512-AKrN98kuwOzMIdAizXGI86UFBoo26CL21UM763y1h/GMSJ4/OHU9k2YlsmBpyScFo/wbLzWQJBMCW4+IO3/+OQ==}
@@ -2724,7 +2739,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.8.31
       caniuse-lite: 1.0.30001757
-      electron-to-chromium: 1.5.259
+      electron-to-chromium: 1.5.260
       node-releases: 2.0.27
       update-browserslist-db: 1.1.4(browserslist@4.28.0)
 
@@ -2832,7 +2847,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.259: {}
+  electron-to-chromium@1.5.260: {}
 
   enabled@2.0.0: {}
 
