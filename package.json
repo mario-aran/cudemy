@@ -6,6 +6,7 @@
     "dev:frontend": "pnpm --filter frontend run dev",
     "dev:services": "pnpm --filter ./services/* -r --parallel run dev",
     "build": "pnpm -r run build --parallel",
+    "preview:frontend": "pnpm --filter frontend run preview",
     "start:services": "pnpm --filter ./services/* -r --parallel run start",
     "clean": "find . -type d \\( -name 'node_modules' -o -name 'dist' -o -name 'coverage' \\) -prune -exec rm -rf {} +",
     "format:eol": "find . -type f -exec dos2unix {} +",

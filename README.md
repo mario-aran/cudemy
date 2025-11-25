@@ -25,6 +25,7 @@ Start dev
 Start prod
 
 - `pnpm run build`: Build all packages
+- `pnpm run preview:frontend`: Run frontend in production preview
 - `pnpm run start:services`: Run all microservices in production
 
 Install packages
