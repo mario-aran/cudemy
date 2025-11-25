@@ -9,7 +9,8 @@
     }
   },
   "scripts": {
-    "build": "tsc --build --clean && tsc"
+    "build": "tsc --build --clean && tsc",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "amqplib": "^0.10.9"
