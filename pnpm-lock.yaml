@@ -158,6 +158,9 @@ importers:
 
   services/courses:
     dependencies:
+      '@scope/logger':
+        specifier: workspace:*
+        version: link:../../packages/logger
       express:
         specifier: ^5.1.0
         version: 5.1.0
