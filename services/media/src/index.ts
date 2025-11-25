@@ -9,7 +9,7 @@ import { logger } from './libs/logger';
 (() => {
   // try {
   // } catch (err) {
-  //   logger.error('startup:failed', err);
+  //   logger.error(`startup:failed ${err}`);
   //   process.exit(1);
   // }
 
@@ -17,7 +17,7 @@ import { logger } from './libs/logger';
     logger.info(`startup:success on port ${String(PORT)}`),
   );
   server.on('error', (err) => {
-    logger.error('startup:failed', err);
+    logger.error(`startup:failed ${err}`);
     process.exit(1);
   });
 })();
@@ -36,7 +36,7 @@ const gracefulShutdown = () =>
     //   try {
     //     await shutdown();
     //   } catch (err) {
-    //     logger.error('shutdown:error', err);
+    //     logger.error(`startup:failed ${err}`);
     //   }
     // }
 

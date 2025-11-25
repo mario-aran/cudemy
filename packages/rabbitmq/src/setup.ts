@@ -29,7 +29,7 @@ export const connectRabbitMQ = async (url: string) => {
   connection = await amqplib.connect(url);
   logger.info('rabbitmq:connected');
 
-  connection.on('error', (err) => logger.error('rabbitmq:error', err));
+  connection.on('error', (err) => logger.error(`rabbitmq:error ${err}`));
 
   connection.on('close', () => {
     if (isShuttingDown || isReconnecting) return;
@@ -44,7 +44,7 @@ export const connectRabbitMQ = async (url: string) => {
           await setConnection();
           isReconnecting = false;
         } catch (err) {
-          logger.error('rabbitmq:error', err);
+          logger.error(`rabbitmq:error ${err}`);
           await new Promise((res) => setTimeout(res, 5000));
         }
       }
@@ -60,7 +60,7 @@ export const connectRabbitMQ = async (url: string) => {
     logger.info('rabbitmq:channels sets');
 
     const bindEvents = (ch: amqplib.Channel) => {
-      ch.on('error', (err) => logger.error('rabbitmq:error', err));
+      ch.on('error', (err) => logger.error(`rabbitmq:error ${err}`));
 
       ch.on('close', () => {
         logger.warn('rabbitmq:channel closed, closing connection');
@@ -69,7 +69,7 @@ export const connectRabbitMQ = async (url: string) => {
           try {
             await connection.close();
           } catch (err) {
-            logger.error('rabbitmq:error', err);
+            logger.error(`rabbitmq:error ${err}`);
           }
         };
         void closeConnection();
@@ -78,7 +78,7 @@ export const connectRabbitMQ = async (url: string) => {
     bindEvents(producerChannel);
     bindEvents(consumerChannel);
   } catch (err) {
-    logger.error('rabbitmq:error', err);
+    logger.error(`rabbitmq:error ${err}`);
     await closeConnection();
   }
 };
@@ -172,7 +172,7 @@ export const startConsumer = async (
         });
         consumerChannel.ack(msg);
       } catch (err) {
-        logger.error('rabbitmq:error', err);
+        logger.error(`rabbitmq:error ${err}`);
         consumerChannel.nack(msg, false, false);
       }
     })();

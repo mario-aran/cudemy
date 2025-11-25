@@ -1,5 +1,6 @@
 import express from 'express';
 import { PORT } from './config/env';
+import { logger } from './libs/logger';
 
 export const app = express();
 
@@ -8,5 +9,5 @@ app.get('/', (_, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log('startup:success on port', PORT);
+  logger.info(`startup:success on port ${String(PORT)}`);
 });
