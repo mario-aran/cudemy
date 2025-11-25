@@ -43,3 +43,24 @@ Install packages
 - [x] eslint.config.js
 - [x] package.json | pnpm-lock.yaml | pnpm-workspace.yaml
 - [x] README.md
+
+## Docs
+
+- [x] "prettier"
+- [x] "prettier-plugin-tailwindcss"
+  - installation: https://prettier.io/docs/install
+  - ".prettierrc": https://prettier.io/docs/configuration
+  - ".prettierignore": https://prettier.io/docs/ignore
+  - "prettier-plugin-tailwindcss": https://github.com/tailwindlabs/prettier-plugin-tailwindcss#readme
+
+- [x] "eslint" | "@eslint/js" | "globals" | "typescript-eslint"
+- [x] "eslint-config-prettier" | "eslint-plugin-check-file" | "eslint-plugin-react-hooks" | "eslint-plugin-react-refresh"
+  - installation: https://eslint.org/docs/latest/use/getting-started
+  - "eslint.config": https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file
+  - "typescript-eslint": https://typescript-eslint.io/getting-started/
+  - linting with type information: https://typescript-eslint.io/getting-started/typed-linting/
+  - disable type checked: https://typescript-eslint.io/users/configs#disable-type-checked
+  - "eslint-config-prettier": https://prettier.io/docs/install#eslint-and-other-linters
+  - "eslint-plugin-check-file": https://github.com/dukeluo/eslint-plugin-check-file
+  - "eslint-plugin-react-hooks": https://www.npmjs.com/package/eslint-plugin-react-hooks
+  - "eslint-plugin-react-refresh": https://www.npmjs.com/package/eslint-plugin-react-refresh
