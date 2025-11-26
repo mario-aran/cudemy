@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@scope/logger": "workspace:*",
+    "@scope/rabbitmq": "workspace:*",
     "express": "^5.1.0",
     "http-status-codes": "^2.3.0"
   },
