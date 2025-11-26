@@ -2,12 +2,13 @@
 // TYPES
 // ---------------------------
 
-type Values<T extends object> = T[keyof T];
+type Values<T> = T[keyof T];
 export type Exchange = Values<typeof EXCHANGES>;
 export type Queue = Values<typeof QUEUES>;
+export type QueueBinding = Values<typeof QUEUE_BINDINGS>;
 
-type RKs = typeof ROUTING_KEYS;
-export type RoutingKey = { [K in keyof RKs]: RKs[K][keyof RKs[K]] }[keyof RKs];
+type NestedValues<T> = { [K in keyof T]: T[K][keyof T[K]] }[keyof T];
+export type RoutingKey = NestedValues<typeof ROUTING_KEYS>;
 
 // ---------------------------
 // CONSTANTS
