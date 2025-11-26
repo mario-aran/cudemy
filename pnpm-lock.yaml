@@ -101,6 +101,9 @@ importers:
       '@types/amqplib':
         specifier: ^0.10.8
         version: 0.10.8
+      tsc-alias:
+        specifier: ^1.8.16
+        version: 1.8.16
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -150,6 +153,9 @@ importers:
       '@scope/logger':
         specifier: workspace:*
         version: link:../../packages/logger
+      '@scope/rabbitmq':
+        specifier: workspace:*
+        version: link:../../packages/rabbitmq
       express:
         specifier: ^5.1.0
         version: 5.1.0
