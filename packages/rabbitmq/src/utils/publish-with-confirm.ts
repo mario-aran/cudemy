@@ -1,12 +1,11 @@
 import { Exchange, RoutingKey } from '@/constants';
-import { EventPayload } from '@/types';
 import amqplib from 'amqplib';
 
 interface PublishWithConfirmProps {
   confirmChannel: amqplib.ConfirmChannel;
   exchange: Exchange;
   routingKey: RoutingKey;
-  payload: EventPayload;
+  payload: Record<string, unknown>;
 }
 
 export const publishWithConfirm = async ({
