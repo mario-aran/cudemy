@@ -1,22 +1,13 @@
 import { Exchange, Queue, RoutingKey } from '@/constants';
 import amqplib from 'amqplib';
 
-interface SetupConsumerQueueProps {
-  channel: amqplib.Channel;
-  queue: Queue;
-  exchange: Exchange;
-  routingKeys: RoutingKey[];
-}
+export const setupConsumerQueue = async (
+  channel: amqplib.Channel,
+  obj: { queue: Queue; exchange: Exchange; routingKeys: RoutingKey[] },
+) => {
+  await channel.assertQueue(obj.queue, { durable: true });
 
-export const setupConsumerQueue = async ({
-  channel,
-  queue,
-  exchange,
-  routingKeys,
-}: SetupConsumerQueueProps) => {
-  await channel.assertQueue(queue, { durable: true });
-
-  for (const key of routingKeys) {
-    await channel.bindQueue(queue, exchange, key);
+  for (const key of obj.routingKeys) {
+    await channel.bindQueue(obj.queue, obj.exchange, key);
   }
 };
