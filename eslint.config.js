@@ -1,14 +1,115 @@
-import eslintConfigNode from '@scope/eslint-config/node';
-import eslintConfigReact from '@scope/eslint-config/react';
-import { defineConfig } from 'eslint/config';
+import eslint from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import checkFile from 'eslint-plugin-check-file';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
+// ---------------------------
+// VALUES
+// ---------------------------
+
+const sharedLanguageOptions = {
+  ecmaVersion: 2020,
+  parserOptions: {
+    projectService: true, // "typescript-eslint": Enables linting with type information
+  },
+};
+
+// ---------------------------
+// CONFIGS
+// ---------------------------
+
+const eslintBaseConfig = defineConfig([
+  globalIgnores([
+    '**/dist/',
+    '**/coverage/',
+    '**/migrations/',
+    '**/resources/',
+  ]),
+
+  // Extended configs
+  eslint.configs.recommended,
+  tseslint.configs.strictTypeChecked, // "typescript-eslint": Strict with type information
+  tseslint.configs.stylisticTypeChecked, // "typescript-eslint": Stylistic with type information
+
+  // Settings
+  {
+    plugins: { 'check-file': checkFile },
+    rules: {
+      // "eslint"
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['..', '../**', 'src/*', 'tests/*'],
+              message: 'Use a path alias instead',
+            },
+            {
+              group: ['@/libs/drizzle/schemas/*'],
+              message: 'Use "@/libs/drizzle/schemas" instead',
+            },
+          ],
+        },
+      ],
+
+      // "typescript-eslint"
+      '@typescript-eslint/no-floating-promises': 'error',
+
+      // "eslint-plugin-check-file"
+      'check-file/filename-naming-convention': [
+        'error',
+        { '**/*.ts': 'KEBAB_CASE' },
+        { ignoreMiddleExtensions: true },
+      ],
+      'check-file/folder-naming-convention': ['error', { '**/': 'KEBAB_CASE' }],
+    },
+  },
+
+  // "eslint-config-prettier": Must be placed last to override other configs
+  eslintConfigPrettier,
+]);
+
+const eslintNodeConfig = defineConfig([
+  // Extended configs
+  eslintBaseConfig,
+
+  // Settings
+  { languageOptions: { ...sharedLanguageOptions, globals: globals.node } },
+]);
+
+const eslintReactConfig = defineConfig([
+  // Extended configs
+  eslintBaseConfig,
+  reactHooks.configs.flat['recommended-latest'],
+  reactRefresh.configs.vite,
+
+  // Settings
+  { languageOptions: { ...sharedLanguageOptions, globals: globals.browser } },
+]);
+
+// ---------------------------
+// ENTRYPOINT
+// ---------------------------
 
 export default defineConfig([
+  // Configs
   {
-    files: ['frontend/**/*'],
-    extends: [eslintConfigReact],
+    files: ['**/*', 'eslint.config.js'],
+    ignores: ['frontend/**/*'],
+    extends: [eslintNodeConfig],
   },
   {
-    files: ['{services,packages}/**/*'],
-    extends: [eslintConfigNode],
+    files: ['frontend/**/*'],
+    extends: [eslintReactConfig],
+  },
+
+  // Overrides
+  {
+    files: ['**/*.{js,jsx,mjs,cjs}'],
+    extends: [tseslint.configs.disableTypeChecked], // "typescript-eslint": Disables linting with type information
   },
 ]);
