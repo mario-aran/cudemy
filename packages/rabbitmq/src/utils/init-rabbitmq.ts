@@ -1,7 +1,6 @@
-import { QueueBinding, RoutingKey } from '@/constants';
+import { Exchange, QueueBinding, RoutingKey } from '@/constants';
 import amqp from 'amqp-connection-manager';
 import { ConfirmChannel } from 'amqplib';
-import { Exchange } from './constants';
 
 // ---------------------------
 // TYPES
