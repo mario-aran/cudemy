@@ -1,3 +1,2 @@
 export * from './constants';
-export * from './init-rabbitmq';
-export * from './publish';
+export * from './rabbitmq-client';
