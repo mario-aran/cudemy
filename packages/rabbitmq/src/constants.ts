@@ -4,7 +4,6 @@
 
 type Values<T> = T[keyof T];
 export type Exchange = Values<typeof EXCHANGES>;
-export type Queue = Values<typeof QUEUES>;
 export type QueueBinding = Values<typeof QUEUE_BINDINGS>;
 
 type NestedValues<T> = { [K in keyof T]: T[K][keyof T[K]] }[keyof T];
@@ -14,22 +13,14 @@ export type RoutingKey = NestedValues<typeof ROUTING_KEYS>;
 // CONSTANTS
 // ---------------------------
 
-// Pattern: domain
+// Exchange pattern: 'domain'
 export const EXCHANGES = {
   COURSES: 'courses',
   MEDIA: 'media',
   ENROLLMENT: 'enrollment',
 } as const;
 
-// Pattern: producer.to.consumer
-export const QUEUES = {
-  COURSES_TO_MEDIA: 'courses.to.media',
-  COURSES_TO_ENROLLMENT: 'courses.to.enrollment',
-  MEDIA_TO_COURSES: 'media.to.courses',
-  ENROLLMENT_TO_COURSES: 'enrollment.to.courses',
-} as const;
-
-// Pattern: domain.entity.action
+// RoutingKey pattern: 'domain.entity.action'
 export const ROUTING_KEYS = {
   COURSES: {
     LECTURE_CREATED: 'courses.lecture.created',
@@ -49,24 +40,25 @@ export const ROUTING_KEYS = {
 // DERIVED CONSTANTS
 // ---------------------------
 
+// Queue pattern: 'producer.to.consumer'
 export const QUEUE_BINDINGS = {
   COURSES_TO_MEDIA: {
-    queue: QUEUES.COURSES_TO_MEDIA,
+    queue: 'courses.to.media',
     exchange: EXCHANGES.COURSES,
     routingKeys: Object.values(ROUTING_KEYS.COURSES),
   },
   COURSES_TO_ENROLLMENT: {
-    queue: QUEUES.COURSES_TO_ENROLLMENT,
+    queue: 'courses.to.enrollment',
     exchange: EXCHANGES.COURSES,
     routingKeys: Object.values(ROUTING_KEYS.COURSES),
   },
   MEDIA_TO_COURSES: {
-    queue: QUEUES.MEDIA_TO_COURSES,
+    queue: 'media.to.courses',
     exchange: EXCHANGES.MEDIA,
     routingKeys: Object.values(ROUTING_KEYS.MEDIA),
   },
   ENROLLMENT_TO_COURSES: {
-    queue: QUEUES.ENROLLMENT_TO_COURSES,
+    queue: 'enrollment.to.courses',
     exchange: EXCHANGES.ENROLLMENT,
     routingKeys: Object.values(ROUTING_KEYS.ENROLLMENT),
   },
