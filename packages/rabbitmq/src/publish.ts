@@ -3,19 +3,19 @@ import { Exchange, RoutingKey } from './constants';
 import { MessagePayload } from './types';
 
 interface PublishProps {
-  channelWrapper: ChannelWrapper;
+  channel: ChannelWrapper;
   exchange: Exchange;
   routingKey: RoutingKey;
   payload: MessagePayload;
 }
 
 export const publish = async ({
-  channelWrapper,
+  channel,
   exchange,
   routingKey,
   payload,
 }: PublishProps) => {
-  await channelWrapper.publish(exchange, routingKey, payload, {
+  await channel.publish(exchange, routingKey, payload, {
     persistent: true, // Survives broker restarts when enqueued in a durable queue
   });
 };
