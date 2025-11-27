@@ -20,7 +20,6 @@ void (async () => {
   const server = app.listen(PORT, () =>
     logger.info(`startup:success on port ${String(PORT)}`),
   );
-
   server.on('error', (err) => {
     logger.error(`startup:failed ${err}`);
     process.exit(1);
@@ -49,6 +48,5 @@ const gracefulShutdown = () =>
     logger.info('shutdown:complete');
     process.exit(0);
   })();
-
 process.on('SIGINT', gracefulShutdown);
 process.on('SIGTERM', gracefulShutdown);
