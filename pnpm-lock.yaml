@@ -119,6 +119,9 @@ importers:
       '@scope/logger':
         specifier: workspace:*
         version: link:../../packages/logger
+      '@scope/rabbitmq':
+        specifier: workspace:*
+        version: link:../../packages/rabbitmq
       express:
         specifier: ^5.1.0
         version: 5.1.0
