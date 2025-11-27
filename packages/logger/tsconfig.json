@@ -1,7 +1,5 @@
 {
   "extends": "@scope/tsconfig/tsconfig.node.json",
-  "compilerOptions": {
-    "outDir": "./dist"
-  },
+  "compilerOptions": { "outDir": "./dist" },
   "include": ["src"]
 }
