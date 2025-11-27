@@ -2,28 +2,36 @@ import { ROUTING_KEYS, RoutingKey } from '@scope/rabbitmq';
 
 const { ASSET_AVAILABLE, ASSET_DELETED } = ROUTING_KEYS.MEDIA;
 
+// ---------------------------
+// TYPES
+// ---------------------------
+
 interface AssetPayload {
   id: string;
 }
 
-interface MediaToCoursesHandlerProps {
+interface CoursesToMediaHandlerProps {
   routingKey: RoutingKey;
-  payload: Record<string, unknown>;
+  payload: object;
 }
+
+// ---------------------------
+// UTILS
+// ---------------------------
 
 const assetAvailable = (payload: AssetPayload) => payload;
 const assetDeleted = (payload: AssetPayload) => payload;
 
-export const mediaToCoursesHandler = ({
+export const coursesToMediaHandler = ({
   routingKey,
   payload,
-}: MediaToCoursesHandlerProps) => {
+}: CoursesToMediaHandlerProps) => {
   switch (routingKey) {
     case ASSET_AVAILABLE:
-      assetAvailable(payload as unknown as AssetPayload);
+      assetAvailable(payload as AssetPayload);
       break;
     case ASSET_DELETED:
-      assetDeleted(payload as unknown as AssetPayload);
+      assetDeleted(payload as AssetPayload);
       break;
   }
 };
