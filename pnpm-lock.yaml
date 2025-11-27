@@ -30,7 +30,7 @@ importers:
         specifier: ^16.5.0
         version: 16.5.0
       prettier:
-        specifier: 3.6.2
+        specifier: ^3.6.2
         version: 3.6.2
       prettier-plugin-tailwindcss:
         specifier: ^0.7.1
