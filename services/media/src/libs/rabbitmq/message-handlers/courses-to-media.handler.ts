@@ -1,4 +1,4 @@
-import { ROUTING_KEYS, RoutingKey } from '@scope/rabbitmq';
+import { MessageProps, ROUTING_KEYS } from '@scope/rabbitmq';
 
 const { ASSET_AVAILABLE, ASSET_DELETED } = ROUTING_KEYS.MEDIA;
 
@@ -8,11 +8,6 @@ const { ASSET_AVAILABLE, ASSET_DELETED } = ROUTING_KEYS.MEDIA;
 
 interface AssetPayload {
   id: string;
-}
-
-interface CoursesToMediaHandlerProps {
-  routingKey: RoutingKey;
-  payload: object;
 }
 
 // ---------------------------
@@ -25,13 +20,13 @@ const assetDeleted = (payload: AssetPayload) => payload;
 export const coursesToMediaHandler = ({
   routingKey,
   payload,
-}: CoursesToMediaHandlerProps) => {
+}: MessageProps) => {
   switch (routingKey) {
     case ASSET_AVAILABLE:
-      assetAvailable(payload as AssetPayload);
+      assetAvailable(payload as unknown as AssetPayload);
       break;
     case ASSET_DELETED:
-      assetDeleted(payload as AssetPayload);
+      assetDeleted(payload as unknown as AssetPayload);
       break;
   }
 };

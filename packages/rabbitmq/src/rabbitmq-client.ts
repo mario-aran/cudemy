@@ -5,9 +5,9 @@ import amqp, {
 import { ConfirmChannel } from 'amqplib';
 import { Exchange, QueueBinding, RoutingKey } from './constants';
 
-interface MessageProps {
+export interface MessageProps {
   routingKey: RoutingKey;
-  payload: object;
+  payload: Record<string, unknown>;
 }
 
 interface ConsumerConfig {
