@@ -3,9 +3,6 @@
   "compilerOptions": {
     // Path aliases
     "baseUrl": ".", // Must be set for path aliases to work
-    "paths": {
-      "@/*": ["src/*"],
-      "@tests/*": ["tests/*"]
-    }
+    "paths": { "@/*": ["src/*"], "@tests/*": ["tests/*"] }
   }
 }
