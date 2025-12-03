@@ -1,4 +1,4 @@
-import { NODE_ENVIRONMENTS } from '@/contants/node-environments';
+import { NODE_ENVIRONMENTS } from '@scope/common';
 
 // ---------------------------
 // VALUES
