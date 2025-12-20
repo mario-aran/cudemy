@@ -64,3 +64,23 @@ Install packages
   - "eslint-plugin-check-file": https://github.com/dukeluo/eslint-plugin-check-file
   - "eslint-plugin-react-hooks": https://www.npmjs.com/package/eslint-plugin-react-hooks
   - "eslint-plugin-react-refresh": https://www.npmjs.com/package/eslint-plugin-react-refresh
+
+## Notas
+
+- typescript | @types/node | tsx | tsc-alias
+- prettier | prettier-plugin-tailwindcss
+- typescript-eslint | eslint | @eslint/js | globals
+  - eslint-config-prettier
+  - eslint-plugin-check-file
+  - eslint-plugin-react-hooks
+  - eslint-plugin-react-refresh
+- vitest | vitest/coverage-v8 | supertest | @types/supertest | testcontainers | @testcontainers/postgresql | @testcontainers/redis
+- drizzle-orm | drizzle-kit | pg | @types/pg
+- express | @types/express
+  - cors | @types/cors
+  - dotenv
+  - http-status-codes
+- swagger-ui-express | @types/swagger-ui-express
+- winston | morgan | @types/morgan
+- nodemailer | @types/nodemailer
+- zod
