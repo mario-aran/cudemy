@@ -1,5 +1,8 @@
+import { AppProvider } from './provider';
+import { AppRouter } from './router';
+
 export const App = () => (
-  <>
-    <div>Hello react</div>
-  </>
+  <AppProvider>
+    <AppRouter />
+  </AppProvider>
 );
