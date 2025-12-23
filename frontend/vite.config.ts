@@ -20,7 +20,7 @@ export default defineConfig(({ mode }: { mode: string }) => {
       react(), // "@vitejs/plugin-react-swc": Babel replacement for faster compilation
       tailwindcss(), // "tailwindcss" for vite
     ],
-    server: { port: Number(env.PORT) || 5173 },
+    server: { port: Number(env.VITE_PORT) || 5173 },
     resolve: {
       // Path aliases
       alias: {
