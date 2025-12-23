@@ -28,6 +28,7 @@ const eslintBaseConfig = defineConfig([
     '**/coverage/',
     '**/migrations/',
     '**/resources/',
+    '**/shadcn-ui/', // "shadcn" components
   ]),
 
   // Extended configs
