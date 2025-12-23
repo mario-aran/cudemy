@@ -1,9 +1,9 @@
-/* // note: DO NOT RENAME OR MOVE THIS FILE — used by shadcn cli */
+/* note: DO NOT RENAME OR MOVE THIS FILE — used by components.json */
 
 /* "tailwindcss" */
 @import 'tailwindcss';
 
-/* "shadcn": Added by shadcn cli */
+/* "shadcn": Values added by shadcn cli */
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));

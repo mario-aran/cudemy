@@ -1,3 +1,14 @@
+## Docs
+
+- vite: https://vite.dev/guide/#scaffolding-your-first-vite-project
+- tailwind: https://tailwindcss.com/docs/installation/using-vite
+- shadcn: https://ui.shadcn.com/docs/installation/vite
+- react-router: https://reactrouter.com/start/data/installation
+
+- [] vite:
+- [x] tailwind: "tailwindcss" | "@tailwindcss/vite"
+- [x] shadcn: "class-variance-authority" | "clsx" | "lucide-react" | "tailwind-merge" | "tw-animate-css"
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
