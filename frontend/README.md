@@ -8,6 +8,7 @@
 - [] vite:
 - [x] tailwind: "tailwindcss" | "@tailwindcss/vite"
 - [x] shadcn: "class-variance-authority" | "clsx" | "lucide-react" | "tailwind-merge" | "tw-animate-css"
+  - [x] "@tanstack/react-table"
 
 # React + TypeScript + Vite
 
