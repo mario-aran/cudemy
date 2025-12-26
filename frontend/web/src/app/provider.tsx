@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@/lib/shadcn/components/dark-mode/theme-provider';
+import { ThemeProvider } from '@/lib/shadcn/dark-mode/theme-provider';
 import type { PropsWithChildren } from 'react';
 
 export const AppProvider = ({ children }: PropsWithChildren) => (
