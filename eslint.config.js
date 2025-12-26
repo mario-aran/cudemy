@@ -1,3 +1,11 @@
+/* docs:
+- installation: https://eslint.org/docs/latest/use/getting-started
+- eslint.config.js: https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file
+- "typescript-eslint": https://typescript-eslint.io/getting-started/
+- linting with type information: https://typescript-eslint.io/getting-started/typed-linting/
+- disable type checked: https://typescript-eslint.io/users/configs#disable-type-checked
+*/
+
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import checkFile from 'eslint-plugin-check-file';
