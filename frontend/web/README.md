@@ -1,18 +1,36 @@
-## Docs
-
-- vite: https://vite.dev/guide/#scaffolding-your-first-vite-project
-- tailwind: https://tailwindcss.com/docs/installation/using-vite
-- shadcn: https://ui.shadcn.com/docs/installation/vite
-- react-router: https://reactrouter.com/start/data/installation
-
-- [] vite:
-- [x] tailwind: "tailwindcss" | "@tailwindcss/vite"
-- [x] shadcn: "class-variance-authority" | "clsx" | "lucide-react" | "tailwind-merge" | "tw-animate-css"
-  - [x] "@tanstack/react-table"
-
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+---
+
+## Config files
+
+- .env
+- .gitignore
+- components.json
+- package.json
+- README.md
+- tsconfig.app.json | tsconfig.json | tsconfig.node.json
+- vite.config.ts
+
+## Packages
+
+- [x] "react" | "react-dom" | "@types/react" | "@types/react-dom"
+  - "typescript" | "@types/node"
+  - "vite" | "@vitejs/plugin-react-swc"
+- [x] "tailwindcss" | "@tailwindcss/vite"
+- [x] Shadcn: "class-variance-authority" | "clsx" | "lucide-react" | "tailwind-merge" | "tw-animate-css"
+  - "@radix-ui/react-slot"
+  - "@tanstack/react-table"
+- [x] "react-router"
+- [x] "react-hook-form" | "@hookform/resolvers"
+- [x] "zustand"
+- [x] "@tanstack/react-query"
+
+---
+
+## Vite
 
 Currently, two official plugins are available:
 

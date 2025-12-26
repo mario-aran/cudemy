@@ -24,7 +24,7 @@ This template was created manually.
 - "prettier"
   - "prettier-plugin-tailwindcss"
 
-## Documentation
+## Docs
 
 Prettier
 

@@ -1,4 +1,8 @@
 /* note: DO NOT RENAME OR MOVE THIS FILE - used by components.json */
+/* docs:
+- shadcn: https://ui.shadcn.com/docs/installation/vite
+- "tailwindcss": https://tailwindcss.com/docs/installation/using-vite
+*/
 
 /* "tailwindcss" */
 @import 'tailwindcss';

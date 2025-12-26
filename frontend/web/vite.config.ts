@@ -1,4 +1,5 @@
 /* docs:
+- install: https://vite.dev/guide/#scaffolding-your-first-vite-project
 - using env in config: https://vite.dev/config/#using-environment-variables-in-config
 */
 
