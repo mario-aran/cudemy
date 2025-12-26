@@ -21,7 +21,6 @@ This template was created manually.
   - "eslint-plugin-check-file"
   - "eslint-plugin-react-hooks"
   - "eslint-plugin-react-refresh"
-
 - [x] "prettier"
   - "prettier-plugin-tailwindcss"
 
