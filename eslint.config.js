@@ -7,6 +7,7 @@
 */
 
 import eslint from '@eslint/js';
+import tanstackQuery from '@tanstack/eslint-plugin-query';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import checkFile from 'eslint-plugin-check-file';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -58,8 +59,8 @@ const eslintConfigBase = defineConfig([
               message: 'Use a path alias instead',
             },
             {
-              group: ['@/libs/drizzle/schemas/*'],
-              message: 'Use "@/libs/drizzle/schemas" instead',
+              group: ['@/lib/drizzle/schemas/*'],
+              message: 'Use "@/lib/drizzle/schemas" instead',
             },
           ],
         },
@@ -90,6 +91,7 @@ const eslintConfigReact = defineConfig([
   eslintConfigBase,
   reactHooks.configs.flat.recommended,
   reactRefresh.configs.vite,
+  tanstackQuery.configs.recommended,
   { languageOptions: { ...sharedLanguageOptions, globals: globals.browser } },
 ]);
 

@@ -21,6 +21,7 @@ This template was created manually.
   - "eslint-plugin-check-file"
   - "eslint-plugin-react-hooks"
   - "eslint-plugin-react-refresh"
+  - "@tanstack/eslint-plugin-query"
 - "prettier"
   - "prettier-plugin-tailwindcss"
 
@@ -31,14 +32,6 @@ Prettier
 - installation: https://prettier.io/docs/install
 - .prettierrc: https://prettier.io/docs/configuration
 - .prettierignore: https://prettier.io/docs/ignore
-
-Eslint
-
-- installation: https://eslint.org/docs/latest/use/getting-started
-- eslint.config.js: https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file
-- "typescript-eslint": https://typescript-eslint.io/getting-started/
-- linting with type information: https://typescript-eslint.io/getting-started/typed-linting/
-- disable type checked: https://typescript-eslint.io/users/configs#disable-type-checked
 
 ---
 

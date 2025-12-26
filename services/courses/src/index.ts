@@ -1,7 +1,7 @@
 import { app } from './app';
 import { PORT } from './config/env';
-import { logger } from './libs/logger';
-import { rabbitMQClient } from './libs/rabbitmq/rabbitmq-client';
+import { logger } from './lib/logger';
+import { rabbitMQClient } from './lib/rabbitmq/rabbitmq-client';
 
 // ---------------------------
 // STARTUP

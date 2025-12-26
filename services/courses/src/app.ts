@@ -1,5 +1,5 @@
 import express from 'express';
-import { morganMiddleware } from './libs/logger';
+import { morganMiddleware } from './lib/logger';
 
 export const app = express();
 
