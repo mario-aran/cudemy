@@ -22,19 +22,19 @@ const sharedLanguageOptions = {
 // CONFIGS
 // ---------------------------
 
-const eslintBaseConfig = defineConfig([
+const eslintConfigBase = defineConfig([
   globalIgnores([
     '**/dist/',
     '**/coverage/',
     '**/migrations/',
     '**/resources/',
-    '**/shadcn-ui/', // "shadcn" components
+    '**/shadcn-ui/',
   ]),
 
   // Extended configs
   eslint.configs.recommended,
-  tseslint.configs.strictTypeChecked, // "typescript-eslint": Strict with type information
-  tseslint.configs.stylisticTypeChecked, // "typescript-eslint": Stylistic with type information
+  tseslint.configs.strictTypeChecked, // Strict with type information
+  tseslint.configs.stylisticTypeChecked, // Stylistic with type information
 
   // Settings
   {
@@ -70,25 +70,18 @@ const eslintBaseConfig = defineConfig([
     },
   },
 
-  // "eslint-config-prettier": Must be placed last to override other configs
-  eslintConfigPrettier,
+  eslintConfigPrettier, // Must be placed last to override other configs
 ]);
 
-const eslintNodeConfig = defineConfig([
-  // Extended configs
-  eslintBaseConfig,
-
-  // Settings
+const eslintConfigNode = defineConfig([
+  eslintConfigBase,
   { languageOptions: { ...sharedLanguageOptions, globals: globals.node } },
 ]);
 
-const eslintReactConfig = defineConfig([
-  // Extended configs
-  eslintBaseConfig,
-  reactHooks.configs.flat['recommended-latest'],
+const eslintConfigReact = defineConfig([
+  eslintConfigBase,
+  reactHooks.configs.flat.recommended,
   reactRefresh.configs.vite,
-
-  // Settings
   { languageOptions: { ...sharedLanguageOptions, globals: globals.browser } },
 ]);
 
@@ -101,16 +94,16 @@ export default defineConfig([
   {
     files: ['**/*', 'eslint.config.js'],
     ignores: ['frontend/**/*'],
-    extends: [eslintNodeConfig],
+    extends: [eslintConfigReact],
   },
   {
     files: ['frontend/**/*'],
-    extends: [eslintReactConfig],
+    extends: [eslintConfigNode],
   },
 
   // Overrides
   {
     files: ['**/*.{js,jsx,mjs,cjs}'],
-    extends: [tseslint.configs.disableTypeChecked], // "typescript-eslint": Disables linting with type information
+    extends: [tseslint.configs.disableTypeChecked], // Disables linting with type information
   },
 ]);
