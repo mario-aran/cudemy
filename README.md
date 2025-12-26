@@ -2,6 +2,29 @@
 
 This template was created manually.
 
+---
+
+## Config files
+
+- [x] .editorconfig
+- [x] .gitignore
+- [x] .prettierignore | .prettierrc
+- [x] docker-compose.yaml
+- [x] eslint.config.js
+- [x] package.json | pnpm-lock.yaml | pnpm-workspace.yaml
+- [x] README.md
+
+## Packages
+
+- [x] "eslint" | "@eslint/js" | "globals" | "typescript-eslint"
+  - "eslint-config-prettier"
+  - "eslint-plugin-check-file"
+  - "eslint-plugin-react-hooks"
+  - "eslint-plugin-react-refresh"
+
+- [x] "prettier"
+  - "prettier-plugin-tailwindcss"
+
 ## Commands
 
 Prepare code
@@ -33,16 +56,6 @@ Install packages
 - `pnpm add -w <package_name>`: (Optional) Add package to workspace root
 - `pnpm add --workspace <scoped_package_name>`: (Optional) Add scoped package
 - `pnpm approve-builds`: (Optional) Approve post-install scripts
-
-## Config files
-
-- [x] .editorconfig
-- [x] .gitignore
-- [x] .prettierignore | .prettierrc
-- [x] docker-compose.yaml
-- [x] eslint.config.js
-- [x] package.json | pnpm-lock.yaml | pnpm-workspace.yaml
-- [x] README.md
 
 ## Docs
 
