@@ -1,4 +1,4 @@
-/* note: DO NOT RENAME OR MOVE THIS FILE — used by components.json */
+/* note: DO NOT RENAME OR MOVE THIS FILE - used by components.json */
 
 /* "tailwindcss" */
 @import 'tailwindcss';
@@ -127,4 +127,4 @@
   }
 }
 
-/* Put below your custom css rules */
+/* note: Put below your custom css rules */
