@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev:frontend": "pnpm --filter frontend run dev",
+    "dev:frontend": "pnpm --filter ./frontend/* -r --parallel run dev",
     "dev:services": "pnpm --filter ./services/* -r --parallel run dev",
     "build": "pnpm -r --parallel run build",
-    "preview:frontend": "pnpm --filter frontend run preview",
+    "preview:frontend": "pnpm --filter ./frontend/* -r --parallel run preview",
     "start:services": "pnpm --filter ./services/* -r --parallel run start",
     "clean": "find . -type d \\( -name 'node_modules' -o -name 'dist' -o -name 'coverage' \\) -prune -exec rm -rf {} +",
     "format:eol": "find . -type f -exec dos2unix {} +",
