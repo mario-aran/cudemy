@@ -7,7 +7,6 @@
 */
 
 import eslint from '@eslint/js';
-import tanstackQuery from '@tanstack/eslint-plugin-query';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import checkFile from 'eslint-plugin-check-file';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -91,7 +90,6 @@ const eslintConfigReact = defineConfig([
   eslintConfigBase,
   reactHooks.configs.flat.recommended,
   reactRefresh.configs.vite,
-  tanstackQuery.configs.recommended,
   { languageOptions: { ...sharedLanguageOptions, globals: globals.browser } },
 ]);
 

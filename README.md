@@ -21,7 +21,6 @@ This template was created manually.
   - "eslint-plugin-check-file"
   - "eslint-plugin-react-hooks"
   - "eslint-plugin-react-refresh"
-  - "@tanstack/eslint-plugin-query"
 - "prettier"
   - "prettier-plugin-tailwindcss"
 
@@ -39,16 +38,16 @@ Prettier
 
 Helpers
 
-- `pnpm up --latest -r --interactive`: Update dependencies to the last version
-- `pnpm approve-builds`: Approve post-install scripts
+- `pnpm run clean`: Delete files ignored by git
 - `pnpm run format:eol`: Convert all files to LF
+- `pnpm install`: Install dependencies
+- `pnpm approve-builds`: Approve post-install scripts
+- `pnpm up --latest -r --interactive`: Update dependencies to the last version
 - `pnpm add -w <package_name>`: Add package to workspace root
 - `pnpm add --workspace <scoped_package_name>`: Add scoped package
 
-Prepare code
+Format code
 
-- `pnpm run clean`: Delete files ignored by git
-- `pnpm install`: Install dependencies
 - `pnpm run format`: Run prettier
 - `pnpm run lint`: Run eslint
 - `pnpm run typecheck`: Run type checker
