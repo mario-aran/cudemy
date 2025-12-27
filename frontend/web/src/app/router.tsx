@@ -1,21 +1,35 @@
 // docs: https://reactrouter.com/start/data/installation
 
+import { LandingLayout } from '@/components/layouts/landing-layout';
+import { MinimalLayout } from '@/components/layouts/minimal-layout';
+import { ProtectedLayout } from '@/components/layouts/protected-layout';
+import { PATHS } from '@/constants/paths';
 import { createBrowserRouter } from 'react-router';
 import { RouterProvider } from 'react-router/dom';
-import { CourseDetailRoute } from './routes/course/detail.route';
-import { CoursePlayerRoute } from './routes/course/player.route';
-import { HomeRoute } from './routes/home.route';
-import { InstructorUploadRoute } from './routes/instructor/upload.route';
-import { NotFoundRoute } from './routes/not-found.route';
+import { CourseDetailRoute } from './routes/course/detail';
+import { CoursePlayerRoute } from './routes/course/player';
+import { HomeRoute } from './routes/home';
+import { InstructorUploadRoute } from './routes/instructor/upload';
+import { NotFoundRoute } from './routes/not-found';
 
 const router = createBrowserRouter([
-  { path: '/', Component: HomeRoute },
-  { path: '/course/:courseId', Component: CourseDetailRoute },
-  { path: '/course/:courseId/player', Component: CoursePlayerRoute },
-  { path: '/instructor/upload', Component: InstructorUploadRoute },
-  { path: '*', Component: NotFoundRoute },
+  {
+    Component: MinimalLayout,
+    children: [{ path: '*', Component: NotFoundRoute }],
+  },
+  {
+    Component: LandingLayout,
+    children: [{ index: true, Component: HomeRoute }],
+  },
+  {
+    Component: ProtectedLayout,
+    children: [
+      { index: true, Component: HomeRoute },
+      { path: PATHS.INSTRUCTOR_UPLOAD, Component: InstructorUploadRoute },
+      { path: PATHS.COURSE_ID, Component: CourseDetailRoute },
+      { path: PATHS.COURSE_ID_PLAYER, Component: CoursePlayerRoute },
+    ],
+  },
 ]);
 
-export const AppRouter = () => {
-  return <RouterProvider router={router} />;
-};
+export const AppRouter = () => <RouterProvider router={router} />;
