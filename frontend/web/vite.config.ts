@@ -1,6 +1,6 @@
 /* docs:
 - install: https://vite.dev/guide/#scaffolding-your-first-vite-project
-- using env in config: https://vite.dev/config/#using-environment-variables-in-config
+- using envs: https://vite.dev/config/#using-environment-variables-in-config
 */
 
 import tailwindcss from '@tailwindcss/vite';
@@ -19,14 +19,12 @@ export default defineConfig(({ mode }: { mode: string }) => {
   return {
     plugins: [
       react(), // "@vitejs/plugin-react-swc": Babel replacement for faster compilation
-      tailwindcss(), // "tailwindcss" for vite
+      tailwindcss(), // Tailwindcss plugin for vite
     ],
     server: { port: Number(env.VITE_PORT) || 5173 },
     resolve: {
       // Path aliases
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-      },
+      alias: { '@': path.resolve(__dirname, './src') },
     },
   };
 });
