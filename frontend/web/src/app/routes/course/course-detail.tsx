@@ -1,5 +1,5 @@
 export const CourseDetailRoute = () => (
   <>
-    <h1>CourseDetailRoute</h1>
+    <h1>Course Detail Route</h1>
   </>
 );

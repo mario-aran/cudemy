@@ -1,5 +1,5 @@
 export const InstructorManageRoute = () => (
   <>
-    <h1>InstructorManageRoute</h1>
+    <h1>Instructor Manage Route</h1>
   </>
 );

@@ -1,5 +1,5 @@
 export const CoursePlayerRoute = () => (
   <>
-    <h1>CoursePlayerRoute</h1>
+    <h1>Course Player Route</h1>
   </>
 );

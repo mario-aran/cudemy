@@ -1,5 +1,5 @@
 export const InstructorUploadRoute = () => (
   <>
-    <h1>InstructorUploadRoute</h1>
+    <h1>Instructor Upload Route</h1>
   </>
 );

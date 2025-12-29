@@ -1,5 +1,5 @@
 export const NotFoundRoute = () => (
   <>
-    <h1>NotfoundRoute</h1>
+    <h1>Not Found Route</h1>
   </>
 );
