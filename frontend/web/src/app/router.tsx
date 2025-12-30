@@ -15,10 +15,7 @@ import { NotFoundRoute } from './routes/not-found';
 
 const router = createBrowserRouter([
   {
-    Component: MinimalLayout,
-    children: [{ path: '*', Component: NotFoundRoute }],
-  },
-  {
+    path: '/',
     Component: LandingLayout,
     children: [{ index: true, Component: LandingRoute }],
   },
@@ -30,6 +27,10 @@ const router = createBrowserRouter([
       { path: PATHS.COURSE_ID_PLAYER, Component: CoursePlayerRoute },
       { path: PATHS.INSTRUCTOR_UPLOAD, Component: InstructorUploadRoute },
     ],
+  },
+  {
+    Component: MinimalLayout,
+    children: [{ path: '*', Component: NotFoundRoute }],
   },
 ]);
 

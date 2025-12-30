@@ -8,9 +8,9 @@ import { NavLink, Outlet } from 'react-router';
 
 const NAV_LINKS = [
   { path: '/', text: 'Home' },
-  { path: PATHS.INSTRUCTOR_UPLOAD, text: 'Instructor Upload' },
   { path: PATHS.COURSE_ID, text: 'Course' },
   { path: PATHS.COURSE_ID_PLAYER, text: 'Course Player' },
+  { path: PATHS.INSTRUCTOR_UPLOAD, text: 'Instructor Upload' },
 ] as const;
 
 // ---------------------------
