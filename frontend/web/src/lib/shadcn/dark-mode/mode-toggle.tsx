@@ -1,6 +1,6 @@
 // note: Based on https://ui.shadcn.com/docs/dark-mode/vite
 
-import { useTheme } from '@/lib/shadcn/dark-mode/provider/theme-provider';
+import { useTheme } from '@/lib/shadcn/dark-mode/theme-provider';
 import { Button } from '@/lib/shadcn/ui/button';
 import { Moon, Sun } from 'lucide-react';
 
@@ -12,7 +12,6 @@ const THEMES = {
 export const ModeToggle = () => {
   const { theme, setTheme } = useTheme();
 
-  // Utils
   const handleOnClick = () => {
     setTheme(theme === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK);
   };
