@@ -1,5 +1,5 @@
 /* docs:
-- install: https://vite.dev/guide/#scaffolding-your-first-vite-project
+- setup: https://vite.dev/guide/#scaffolding-your-first-vite-project
 - using envs: https://vite.dev/config/#using-environment-variables-in-config
 */
 
@@ -19,7 +19,7 @@ export default defineConfig(({ mode }: { mode: string }) => {
   return {
     plugins: [
       react(), // "@vitejs/plugin-react-swc": Babel replacement for faster compilation
-      tailwindcss(), // Tailwindcss plugin for vite
+      tailwindcss(), // "@tailwindcss/vite": Tailwindcss plugin for vite
     ],
     server: { port: Number(env.VITE_PORT) || 5173 },
     resolve: {
