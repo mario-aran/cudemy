@@ -22,11 +22,11 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [x] "tailwindcss" | "@tailwindcss/vite"
 - [x] Shadcn: "class-variance-authority" | "clsx" | "lucide-react" | "tailwind-merge" | "tw-animate-css"
   - "@radix-ui/react-slot"
-  - "@tanstack/react-table"
+  - "next-themes" | "sonner"
 - [x] "react-router"
-- [x] "react-hook-form" | "@hookform/resolvers"
-- [x] "zustand"
 - [x] "@tanstack/react-query"
+- [x] "zustand"
+- [x] "react-hook-form" | "@hookform/resolvers"
 
 ---
 
