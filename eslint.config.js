@@ -81,18 +81,6 @@ const eslintConfigBase = defineConfig([
   eslintConfigPrettier, // Must be placed last to override other configs
 ]);
 
-const eslintConfigNode = defineConfig([
-  eslintConfigBase,
-  { languageOptions: { ...sharedLanguageOptions, globals: globals.node } },
-]);
-
-const eslintConfigReact = defineConfig([
-  eslintConfigBase,
-  reactHooks.configs.flat.recommended,
-  reactRefresh.configs.vite,
-  { languageOptions: { ...sharedLanguageOptions, globals: globals.browser } },
-]);
-
 // ---------------------------
 // ENTRYPOINT
 // ---------------------------
@@ -102,11 +90,30 @@ export default defineConfig([
   {
     files: ['**/*', 'eslint.config.js'],
     ignores: ['frontend/**/*'],
-    extends: [eslintConfigReact],
+    extends: [
+      defineConfig([
+        eslintConfigBase,
+        reactHooks.configs.flat.recommended,
+        reactRefresh.configs.vite,
+        {
+          languageOptions: {
+            ...sharedLanguageOptions,
+            globals: globals.browser,
+          },
+        },
+      ]),
+    ],
   },
   {
     files: ['frontend/**/*'],
-    extends: [eslintConfigNode],
+    extends: [
+      defineConfig([
+        eslintConfigBase,
+        {
+          languageOptions: { ...sharedLanguageOptions, globals: globals.node },
+        },
+      ]),
+    ],
   },
 
   // Overrides

@@ -1,4 +1,4 @@
-// notes: Based on https://ui.shadcn.com/docs/dark-mode/vite
+// note: Based on https://ui.shadcn.com/docs/dark-mode/vite
 
 import type { PropsWithChildren } from 'react';
 import { ThemeProvider } from './theme-provider';
