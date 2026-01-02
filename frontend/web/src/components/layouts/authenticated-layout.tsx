@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 
-export const ProtectedLayout = () => (
+export const AuthenticatedLayout = () => (
   <main>
     <Outlet />
   </main>
