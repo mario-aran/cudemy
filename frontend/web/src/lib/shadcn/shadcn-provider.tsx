@@ -5,8 +5,8 @@
 */
 
 import type { PropsWithChildren } from 'react';
-import { ThemeProvider, useTheme } from './components/dark-mode/theme-provider';
-import { Toaster } from './components/ui/sonner';
+import { ThemeProvider, useTheme } from './dark-mode/theme-provider';
+import { Toaster } from './installed/components/ui/sonner';
 
 export const ShadcnProvider = ({ children }: PropsWithChildren) => {
   const { theme } = useTheme();
