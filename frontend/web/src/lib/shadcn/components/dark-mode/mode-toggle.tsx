@@ -1,4 +1,4 @@
-// docs: https://ui.shadcn.com/docs/dark-mode/vite
+// note: Based on https://ui.shadcn.com/docs/dark-mode/vite
 
 import { useTheme } from '@/lib/shadcn/components/dark-mode/theme-provider';
 import { Button } from '@/lib/shadcn/components/ui/button';
@@ -18,8 +18,8 @@ export const ModeToggle = () => {
 
   return (
     <Button variant="outline" size="icon" onClick={handleOnClick}>
-      <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+      <Moon className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+      <Sun className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
       <span className="sr-only">Toggle theme</span>
     </Button>
   );
