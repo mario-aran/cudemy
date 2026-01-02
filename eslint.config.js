@@ -32,7 +32,7 @@ const eslintConfigBase = defineConfig([
     '**/coverage/',
     '**/migrations/',
     '**/resources/',
-    '**/shadcn/ui/',
+    '**/shadcn/components/ui/',
   ]),
 
   // Extended configs
