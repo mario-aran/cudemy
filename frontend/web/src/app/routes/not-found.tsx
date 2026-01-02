@@ -1,4 +1,4 @@
-import { Button } from '@/lib/shadcn/components/ui/button';
+import { Button } from '@/lib/shadcn/installed/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router';
 
