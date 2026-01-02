@@ -1,35 +1,33 @@
 // docs: https://reactrouter.com/start/data/installation
 
-import { LandingLayout } from '@/components/layouts/landing-layout';
-import { MinimalLayout } from '@/components/layouts/minimal-layout';
-import { ProtectedLayout } from '@/components/layouts/protected-layout';
+import { AuthenticatedLayout } from '@/components/layouts/authenticated-layout';
+import { HeadlessLayout } from '@/components/layouts/headless-layout';
+import { SiteLayout } from '@/components/layouts/site-layout';
 import { PATHS } from '@/constants/paths';
-import { createBrowserRouter } from 'react-router';
-import { RouterProvider } from 'react-router/dom';
-import { CourseDetailRoute } from './routes/course/course-detail';
-import { CoursePlayerRoute } from './routes/course/course-player';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import { AppRoute } from './routes/app';
+import { CourseDetailRoute } from './routes/app/course/course-detail';
+import { CoursePlayerRoute } from './routes/app/course/course-player';
+import { InstructorUploadRoute } from './routes/app/instructor/instructor-upload';
 import { HomeRoute } from './routes/home';
-import { InstructorUploadRoute } from './routes/instructor/instructor-upload';
-import { LandingRoute } from './routes/landing';
 import { NotFoundRoute } from './routes/not-found';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    Component: LandingLayout,
-    children: [{ index: true, Component: LandingRoute }],
+    Component: SiteLayout,
+    children: [{ path: '/', Component: HomeRoute }],
   },
   {
-    Component: ProtectedLayout,
+    Component: AuthenticatedLayout,
     children: [
-      { index: true, Component: HomeRoute },
-      { path: PATHS.COURSE_ID, Component: CourseDetailRoute },
-      { path: PATHS.COURSE_ID_PLAYER, Component: CoursePlayerRoute },
-      { path: PATHS.INSTRUCTOR_UPLOAD, Component: InstructorUploadRoute },
+      { path: PATHS.APP, Component: AppRoute },
+      { path: PATHS.APP_COURSE_ID, Component: CourseDetailRoute },
+      { path: PATHS.APP_COURSE_ID_PLAYER, Component: CoursePlayerRoute },
+      { path: PATHS.APP_INSTRUCTOR_UPLOAD, Component: InstructorUploadRoute },
     ],
   },
   {
-    Component: MinimalLayout,
+    Component: HeadlessLayout,
     children: [{ path: '*', Component: NotFoundRoute }],
   },
 ]);
