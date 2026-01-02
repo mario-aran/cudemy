@@ -19,16 +19,12 @@ import tseslint from 'typescript-eslint';
 // VALUES
 // ---------------------------
 
-const sharedLanguageOptions = {
+const baseLanguageOptions = {
   ecmaVersion: 2020,
   parserOptions: {
     projectService: true, // "typescript-eslint": Enables linting with type information
   },
 };
-
-// ---------------------------
-// CONFIGS
-// ---------------------------
 
 const eslintConfigBase = defineConfig([
   globalIgnores([
@@ -36,7 +32,7 @@ const eslintConfigBase = defineConfig([
     '**/coverage/',
     '**/migrations/',
     '**/resources/',
-    '**/shadcn-ui/',
+    '**/shadcn/ui/',
   ]),
 
   // Extended configs
@@ -90,30 +86,17 @@ export default defineConfig([
   {
     files: ['**/*', 'eslint.config.js'],
     ignores: ['frontend/**/*'],
-    extends: [
-      defineConfig([
-        eslintConfigBase,
-        reactHooks.configs.flat.recommended,
-        reactRefresh.configs.vite,
-        {
-          languageOptions: {
-            ...sharedLanguageOptions,
-            globals: globals.browser,
-          },
-        },
-      ]),
-    ],
+    extends: [eslintConfigBase],
+    languageOptions: { ...baseLanguageOptions, globals: globals.node },
   },
   {
     files: ['frontend/**/*'],
     extends: [
-      defineConfig([
-        eslintConfigBase,
-        {
-          languageOptions: { ...sharedLanguageOptions, globals: globals.node },
-        },
-      ]),
+      eslintConfigBase,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
     ],
+    languageOptions: { ...baseLanguageOptions, globals: globals.browser },
   },
 
   // Overrides
