@@ -1,5 +1,3 @@
-// note: File created by shadcn cli
-
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
