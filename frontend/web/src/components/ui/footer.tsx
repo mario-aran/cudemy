@@ -1,0 +1,7 @@
+export const Footer = () => (
+  <footer className="border-t">
+    <div className="container mx-auto border-x px-4 py-6 text-center text-sm">
+      <p>© {new Date().getFullYear()} Mario Arancibia. All rights reserved.</p>
+    </div>
+  </footer>
+);
