@@ -1,15 +1,10 @@
 export const SEGMENTS = {
   ID: '/:id',
   APP: '/app',
-  COURSE: '/course',
-  INSTRUCTOR: '/instructor',
-  PLAYER: '/player',
-  UPLOAD: '/upload',
+  COURSES: '/courses',
 } as const;
 
 export const PATHS = {
   APP: SEGMENTS.APP,
-  APP_COURSE_ID: `${SEGMENTS.APP}${SEGMENTS.COURSE}${SEGMENTS.ID}`,
-  APP_COURSE_ID_PLAYER: `${SEGMENTS.APP}${SEGMENTS.COURSE}${SEGMENTS.ID}${SEGMENTS.PLAYER}`,
-  APP_INSTRUCTOR_UPLOAD: `${SEGMENTS.APP}${SEGMENTS.INSTRUCTOR}${SEGMENTS.UPLOAD}`,
+  APP_COURSES: `${SEGMENTS.APP}${SEGMENTS.COURSES}`,
 } as const;
