@@ -1,7 +1,7 @@
 // docs: https://reactrouter.com/start/data/installation
 
 import { AuthenticatedLayout } from '@/components/layouts/authenticated-layout';
-import { HeadlessLayout } from '@/components/layouts/headless-layout';
+import { BlankLayout } from '@/components/layouts/blank-layout';
 import { SiteLayout } from '@/components/layouts/site-layout';
 import { PATHS } from '@/constants/paths';
 import { createBrowserRouter, RouterProvider } from 'react-router';
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    Component: HeadlessLayout,
+    Component: BlankLayout,
     children: [{ path: '*', Component: NotFoundRoute }],
   },
 ]);

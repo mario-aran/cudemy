@@ -1,10 +1,12 @@
+import { Footer } from '@/components/ui/footer';
 import { AppSidebar } from '@/lib/shadcn/app-sidebar';
 import { ModeToggle } from '@/lib/shadcn/dark-mode/mode-toggle';
+import { Button } from '@/lib/shadcn/installed/components/ui/button';
 import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/lib/shadcn/installed/components/ui/sidebar';
-import { Outlet } from 'react-router';
+import { Link, Outlet } from 'react-router';
 
 export const AuthenticatedLayout = () => (
   <SidebarProvider defaultOpen={false}>
@@ -12,9 +14,20 @@ export const AuthenticatedLayout = () => (
 
     <div className="flex flex-1 flex-col">
       <header className="border-b">
-        <div className="container mx-auto px-4">
-          <SidebarTrigger />
-          <ModeToggle />
+        <div className="container mx-auto flex items-center justify-between border-x px-4 py-2">
+          <div className="flex items-center gap-2">
+            <SidebarTrigger />
+          </div>
+
+          <div>
+            <Button asChild>
+              <Link to="/">My App</Link>
+            </Button>
+          </div>
+          <div className="flex items-center gap-2">
+            <ModeToggle />
+            <ModeToggle />
+          </div>
         </div>
       </header>
 
@@ -24,13 +37,7 @@ export const AuthenticatedLayout = () => (
         </div>
       </main>
 
-      <footer className="border-t">
-        <div className="container mx-auto border-x px-4 py-6 text-center text-sm">
-          <p>
-            © {new Date().getFullYear()} Mario Arancibia. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   </SidebarProvider>
 );
