@@ -1,8 +1,8 @@
 // docs: https://reactrouter.com/start/data/installation
 
-import { AuthenticatedLayout } from '@/components/layouts/authenticated-layout';
+import { AppLayout } from '@/components/layouts/app-layout';
 import { BlankLayout } from '@/components/layouts/blank-layout';
-import { SiteLayout } from '@/components/layouts/site-layout';
+import { PublicLayout } from '@/components/layouts/public-layout';
 import { PATHS } from '@/constants/paths';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { AppRoute } from './routes/app';
@@ -12,11 +12,11 @@ import { NotFoundRoute } from './routes/not-found';
 
 const router = createBrowserRouter([
   {
-    Component: SiteLayout,
+    Component: PublicLayout,
     children: [{ path: '/', Component: HomeRoute }],
   },
   {
-    Component: AuthenticatedLayout,
+    Component: AppLayout,
     children: [
       { path: PATHS.APP, Component: AppRoute },
       { path: PATHS.APP_COURSES, Component: CoursesRoute },
