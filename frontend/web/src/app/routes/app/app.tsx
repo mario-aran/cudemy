@@ -1,5 +1,5 @@
 export const AppRoute = () => (
   <>
-    <h1>App Route</h1>
+    <h1>App</h1>
   </>
 );
