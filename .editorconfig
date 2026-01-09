@@ -4,12 +4,12 @@
 root = true
 
 [*]
-# Non configurable Prettier behaviors
+# Non configurable prettier behaviors
 charset = utf-8
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-# Configurable Prettier behaviors
+# Configurable prettier behaviors
 end_of_line = lf
 indent_style = space
 indent_size = 2
