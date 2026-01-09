@@ -19,15 +19,15 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [x] "react" | "react-dom" | "@types/react" | "@types/react-dom"
   - "typescript" | "@types/node"
   - "vite" | "@vitejs/plugin-react-swc"
-- [x] "tailwindcss" | "@tailwindcss/vite"
 - [x] Shadcn: "class-variance-authority" | "clsx" | "lucide-react" | "tailwind-merge" | "tw-animate-css"
+  - "tailwindcss" | "@tailwindcss/vite"
   - button: "@radix-ui/react-slot"
   - sonner: "next-themes" | "sonner"
-  - sidebar (input,separator,sheet,skeleton,tooltip): "@radix-ui/react-dialog" | "@radix-ui/react-separator" | "@radix-ui/react-tooltip"
+  - sidebar(input,separator,sheet,skeleton,tooltip): "@radix-ui/react-dialog" | "@radix-ui/react-separator" | "@radix-ui/react-tooltip"
 - [x] "react-router"
+- [x] "react-hook-form" | "@hookform/resolvers"
 - [x] "@tanstack/react-query"
 - [x] "zustand"
-- [x] "react-hook-form" | "@hookform/resolvers"
 
 ---
 
