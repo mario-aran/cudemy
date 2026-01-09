@@ -7,7 +7,7 @@
 /* "tailwindcss" */
 @import 'tailwindcss';
 
-/* "shadcn": Values added by shadcn cli */
+/* shadcn: Values added by shadcn cli */
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
