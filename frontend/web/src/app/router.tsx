@@ -3,23 +3,31 @@
 import { AppLayout } from '@/components/layouts/app-layout';
 import { BlankLayout } from '@/components/layouts/blank-layout';
 import { PublicLayout } from '@/components/layouts/public-layout';
-import { PATHS } from '@/constants/paths';
+import { PATHS, SEGMENTS } from '@/constants/paths';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import { AppRoute } from './routes/app';
 import { CoursesRoute } from './routes/app/courses';
-import { HomeRoute } from './routes/home';
+import { HomeRoute } from './routes/app/home';
+import { LandingRoute } from './routes/landing';
 import { NotFoundRoute } from './routes/not-found';
 
 const router = createBrowserRouter([
   {
+    path: '/',
     Component: PublicLayout,
-    children: [{ path: '/', Component: HomeRoute }],
+    children: [{ index: true, Component: LandingRoute }],
   },
   {
+    path: PATHS.APP,
     Component: AppLayout,
     children: [
-      { path: PATHS.APP, Component: AppRoute },
-      { path: PATHS.APP_COURSES, Component: CoursesRoute },
+      { index: true, Component: HomeRoute },
+      {
+        path: SEGMENTS.COURSES,
+        children: [
+          { index: true, Component: CoursesRoute },
+          { path: SEGMENTS.COURSE_ID },
+        ],
+      },
     ],
   },
   {
